@@ -1,6 +1,57 @@
-.footer
+#footer-white
     .container
-        .clearfix
-            .footer-logo
-            dl.footer-nav.pull-right
-                
+      .row
+        .col-sm-3.menu
+          h3 Overview
+          ul
+            li
+              a(href='features.html') Features
+            li
+              a(href='services.html') Services
+            li
+              a(href='pricing.html') Pricing
+            li
+              a(href='support.html') Support
+            li
+              a(href='blog.html') Blog
+            li
+              a(href='blog.html') Coming soon
+        .col-sm-3.menu
+          h3 Menu
+          ul
+            li
+              a(href='features.html') About us
+            li
+              a(href='services.html') Contact us
+            li
+              a(href='aboutus.html') Jobs
+              a.hiring(href='aboutus.html')
+                | We're hiring!
+            li
+              a(href='support.html') Portfolio
+            li
+              a(href='blog.html') Status
+        .col-sm-2.menu
+          h3 Social
+          ul
+            li
+              a(href='features.html') Youtube
+            li
+              a(href='services.html') Facebook
+            li
+              a(href='pricing.html') Twitter
+        .col-sm-4.newsletter
+          .signup.clearfix
+            p
+              | Sign up for the newsletter and we'll inform you of updates, offers and more.
+            form
+              input.form-control(type='text', name='email', placeholder='Your email address')
+              input(type='submit', value='Sign up')
+          //- a(href='#')
+            img(src='images/social/social-tw.png', alt='twitter')
+          //- a(href='#')
+            img(src='images/social/social-dbl.png', alt='dribbble')
+      .row.credits
+        .col-md-12
+          | Copyright © 2014. Wellness Telecom
+

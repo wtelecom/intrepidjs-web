@@ -1,3 +1,194 @@
+include header
+
+#hero
+    .container
+      h1.hero-text.animated.fadeInDown
+        | The best interfaces
+        br
+        | for your web & mobile apps
+      p.sub-text.animated.fadeInDown
+        | Get a complete existing website with great design up and running in no time.
+      .cta.animated.fadeInDown
+        a.button-outline(href='features.html') See the tour
+        a.button(href='signup.html') Sign up free
+      //- .img
+//- #features
+    .container
+      .row.header
+        .col-md-12
+          h2 Need an easy way to customize your site?
+          p React is perfect for novice developers and experts alike.
+      .row.feature
+        .col-md-6.info
+          h4 You don't need to have great technical experience to use your product.
+          p
+            | Whether you want to fill this paragraph with some text like I'm doing right now, this place
+            | is perfect to describe some features or anything you want - React has a complete solution for you.
+        .col-md-6.image
+          img.img-responsive(src='images/feature1.png', alt='feature1')
+      .divider
+      .row.feature.backwards
+        .col-md-6.info
+          h4 A fully featured well design template that works.
+          p
+            | You have complete control over the look & feel of your website, we offer the best quality so you
+            | take your site up and running in no time.
+          p
+            | Write some text here to explain the features of your site or application, it
+            | has lots of uses.
+        .col-md-6.image
+          img.img-responsive(src='images/feature2.png', alt='feature2')
+//- #pricing
+    .container
+      .row.header
+        .col-md-12
+          h3 Free trial. No contract. Cancel when you want.
+          p All plans include a 7-day free trial
+      .row.charts
+        .col-md-4
+          .chart.first
+            .quantity
+              span.dollar $
+              span.price 29
+              span.period /month
+            .plan-name Freelance
+            .specs
+              .spec
+                span.variable 5
+                | team members
+              .spec
+                span.variable Digital
+                | recurring billing
+              .spec
+                span.variable Virtual
+                | online terminal
+              .spec
+                span.variable 10
+                | total products
+              .spec
+                span.variable 1.0%
+                | Transaction fee
+            a.btn-signup.button-clear(href='signup.html')
+              span Start free trial
+        .col-md-4
+          .chart.featured
+            .popular Most popular
+            .quantity
+              span.dollar $
+              span.price 79
+              span.period /month
+            .plan-name Profesional
+            .specs
+              .spec
+                span.variable 15
+                | team members
+              .spec
+                span.variable Digital
+                | recurring billing
+              .spec
+                span.variable Virtual
+                | online terminal
+              .spec
+                span.variable 15
+                | total products
+              .spec
+                span.variable 0.5%
+                | Transaction fee
+            a.btn-signup.button-clear(href='signup.html')
+              span Start free trial
+        .col-md-4
+          .chart.last
+            .quantity
+              span.dollar $
+              span.price 119
+              span.period /month
+            .plan-name Premium
+            .specs
+              .spec
+                span.variable Unlimited
+                | team members
+              .spec
+                span.variable Digital
+                | recurring billing
+              .spec
+                span.variable Virtual
+                | online terminal
+              .spec
+                span.variable 25
+                | total products
+              .spec
+                span.variable No
+                | Transaction fee
+            a.btn-signup.button-clear(href='signup.html')
+              span Start free trial
+//- #slider
+    .container
+      .row.header
+        .col-md-12
+          h3 Includes all pages that a complete theme should have
+      .row
+        .col-md-12.slide-wrapper
+          .slideshow
+            .btn-nav.prev
+            .btn-nav.next
+            .slide.active
+              img(src='images/slider/slide3.png', alt='slide3')
+            .slide
+              img(src='images/slider/slide4.png', alt='slide4')
+            .slide
+              img(src='images/slider/slide1.png', alt='slide1')
+            .slide
+              img(src='images/slider/slide5.png', alt='slide5')
+            .slide
+              img(src='images/slider/slide2.png', alt='slide2')
+//- #testimonials
+    .container
+      .row.header
+        .col-md-12
+          h3 Trusted by a lot businesses around the world:
+      .row
+        .col-sm-6
+          .testimonial.pull-right
+            .quote
+              | I am just quoting some stuff but I am seriously happy about this product. Has a lot of powerful
+              | features and is so easy to set up, I could stay customizing it day and night, it's just so much fun!
+              .arrow-down
+                .arrow
+                .arrow-border
+            .author
+              img.pic(src='images/testimonials/testimonial1.jpg', alt='testimonial1')
+              .name John McClane
+              .company Microsoft
+        .col-sm-6
+          .testimonial
+            .quote
+              | This thing is one of those tools that everybody should be using. I really like it and with this ease to use, you can kickstart your projects and apps and just focus on your business!
+              .arrow-down
+                .arrow
+                .arrow-border
+            .author
+              img.pic(src='images/testimonials/testimonial2.jpg', alt='testimonial2')
+              .name Karen Jones
+              .company Pixar Co.
+//- #cta
+    p
+      | Start your free 14 day trial!
+    a(href='signup.html')
+      | Sign up for free
+//- #clients
+    .container
+      .row
+        .col-md-12
+          h3 Our Customers
+          p
+            | These are some of our customers who have helped us by using our product.
+          .logos
+            img(src='images/logos/google.png')
+            img(src='images/logos/facebook.png')
+            img(src='images/logos/apple.png')
+            img(src='images/logos/stripe.png')
+            img(src='images/logos/yahoo.png')
+
 div.col-xs-12
     div.row
         each highlight_center in highlights_center
@@ -14,3 +205,5 @@ div.col-md-4.col-xs-12
         each highlight_right in highlights_right
             div.col-xs-12
                 div(ng-include="'#{highlight_right.route}'")
+
+include footer

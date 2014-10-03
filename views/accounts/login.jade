@@ -1,6 +1,32 @@
 block content
-    form.form-signin.panel.panel-body(role='form', ng-submit="account_process('login')", method="post")
-      h2.form-signin-heading= __('Please sign in')
-      input.form-control.username(type='text', placeholder='Username', name="username", ng-model="formData.username", required='', autofocus='')
-      input.form-control.password(type='password', placeholder='Password',name="password", ng-model="formData.password", required='')
-      button.btn.btn-lg.btn-primary.btn-block(type='submit')= __('Sign in')
+  #signup
+    .container
+      .row.header
+        .col-md-12
+          h3.logo
+            a(ui-sref='/') #{title}
+          h4= __('Sign in to your account.')
+      .row
+        .col-md-12
+          .wrapper.clearfix
+            .formy
+              .row
+                .col-md-12
+                  form(role='form', ng-submit="account_process('login')", method="post")
+                    .form-group
+                      label(for='name')= __('Username')
+                      input#name.form-control(type='text', placeholder='Username', name="username", ng-model="formData.username", required='', autofocus='')
+                    .form-group
+                      label(for='password')= __('Password')
+                      input#password.form-control(type='password', placeholder='Password',name="password", ng-model="formData.password", required='')
+                    //- .checkbox
+                      label
+                        input(type='checkbox')
+                        | Remember me
+                    .submit
+                      button.btn.btn-lg.btn-primary(type='submit')= __('Sign in to my account')
+
+          .already-account
+            span= __("Don't have an account?")
+            | &nbsp;
+            a(ui-sref='signup')= __('Create one here')
