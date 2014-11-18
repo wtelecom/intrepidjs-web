@@ -96,6 +96,7 @@ exports.main_modules = [
 
 // Modules to load
 exports.modules = [
+    'documentation'
 ];
 
 // Modules models

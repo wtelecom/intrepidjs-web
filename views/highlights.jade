@@ -1,17 +1,78 @@
-include header
-
 #hero
     .container
-      h1.hero-text.animated.fadeInDown
-        | The best interfaces
-        br
-        | for your web & mobile apps
-      p.sub-text.animated.fadeInDown
-        | Get a complete existing website with great design up and running in no time.
-      .cta.animated.fadeInDown
-        a.button-outline(href='features.html') See the tour
-        a.button(href='signup.html') Sign up free
+      img.mainlogo-icon.animated.fadeInDown(src='/vendor/misc/theme/img/intrepid-logo.png')
+      div
+        h1.hero-text.animated.fadeInDown
+          | The best interfaces
+          br
+          | for your web & mobile apps
+        .sub-text-boxes.animated.fadeInDown
+          .sub-text-box
+            img.feature-icon(src='/vendor/misc/theme/img/fast.png')
+            p.feature-text
+             | FAST
+            p.feature-sub-text
+             | We use the latest Map reduce Technologies
+          .sub-text-box
+            img.feature-icon(src='/vendor/misc/theme/img/modular.png')
+            p.feature-text
+             | MODULAR
+            p.feature-sub-text
+             | Highly configurable system
+          .sub-text-box
+            img.feature-icon(src='/vendor/misc/theme/img/customizable.png')
+            p.feature-text
+             | CUSTOMIZABLE
+            p.feature-sub-text
+             | Editable & alterable in order to fot your preferences
+      
+        //-.cta.animated.fadeInDown
+          a.button-outline(href='features.html') See the tour
+          a.button(href='signup.html') Sign up free
       //- .img
+#mean 
+  .container
+    .row.mean
+      .col-xs-3
+        img.mean-icon1(src='/vendor/misc/theme/img/mongodb.png')
+        p
+          | MongoDB is the leading NoSQL 
+          | database, empowering businesses 
+          | to be more agile and scalable.
+      .col-xs-3 
+        img.mean-icon2(src='/vendor/misc/theme/img/express.png')
+        p
+          | Express is a minimal and flexible 
+          | node.js web application framework, 
+          | providing a robust set of features 
+          | for building single and multi-page, 
+          | and hybrid web applications.
+      .col-xs-3
+        img.mean-icon3(src='/vendor/misc/theme/img/angularjs.png')
+        p
+          | AngularJS lets you extend HTML 
+          | vocabulary for your application. 
+          | The resulting environment is 
+          | extraordinarily expressive, readable, 
+          | and quick to develop.
+      .col-xs-3
+        img.mean-icon4(src='/vendor/misc/theme/img/nodejs.png')
+        p
+          | Node.js is a platform built on 
+          | Chrome's JavaScript runtime for 
+          | easily building fast, scalable 
+          | network applications.
+
+    //-.mean-box
+      .mean-box-content
+        img.mean-icon1(src='/vendor/misc/theme/img/mongodb.png')
+      .mean-box-content
+        img.mean-icon2(src='/vendor/misc/theme/img/express.png')
+      .mean-box-content
+        img.mean-icon3(src='/vendor/misc/theme/img/angularjs.png')
+      .mean-box-content
+        img.mean-icon4(src='/vendor/misc/theme/img/nodejs.png')
+
 //- #features
     .container
       .row.header
