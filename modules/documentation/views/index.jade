@@ -1,28 +1,46 @@
 
 div
-	div#SideBar.animated.fadeInDown
-		h3.text INDEX
-		br
-		div.menu(ng-repeat="doc in docs.api")
-			a.text(ng-href="/#/documentation#{{doc.index}}"): strong {{doc.index}}
-			div.menu(ng-repeat="sub in doc.content")
-				p.text.sub {{sub.index}}
-	//- div#ApiDocs.animated.fadeInDown
-		h3.text API Documentation
-		br
-		div(ng-repeat="doc in docs.api")
-			a(id="{{doc.index}}")
-			h4.text {{doc.index}}
-			p.text {{doc.api}}
-			hr
-			div(ng-repeat="sub in doc.content")
-				h4.text {{sub.index}}
-				p.text.sub {{sub.api}}
-				hr.sub
-	div#ApiDocs.animated.fadeInDown
-		div(ng-repeat="doc in api")
-			h3(id="{{doc.id}}", ng-bind-html="doc.title" )
-			div(ng-repeat="doc1 in doc.content")
-				h4(id="{{doc1.id", ng-bind-html="doc1.title")
-				div(ng-repeat="doc2 in doc1.content")
-					div(ng-bind-html="doc2")
+    //- div#SideBar.animated.fadeInDown
+        h3.text INDEX
+        br
+        div.menu(ng-repeat="doc in docs.api")
+            a.text(ng-href="/#/documentation#{{doc.index}}"): strong {{doc.index}}
+            div.menu(ng-repeat="sub in doc.content")
+                p.text.sub {{sub.index}}
+    //- div#ApiDocs.animated.fadeInDown
+        h3.text API Documentation
+        br
+        div(ng-repeat="doc in docs.api")
+            a(id="{{doc.index}}")
+            h4.text {{doc.index}}
+            p.text {{doc.api}}
+            hr
+            div(ng-repeat="sub in doc.content")
+                h4.text {{sub.index}}
+                p.text.sub {{sub.api}}
+                hr.sub
+
+
+    div#SideBar.animated.fadeInDown
+        h3.text INDEX
+        br
+        div.menu(ng-repeat="doc in api")
+            a.text(ng-href="/#/documentation#{{doc.id}}")
+                strong(ng-bind-html="doc.title")
+            div.menu(ng-repeat="doc1 in doc.content")
+                a.text(ng-href="/#/documentation#{{doc1.id}}")
+                    strong(ng-bind-html="doc1.title")
+    div#ApiDocs.animated.fadeInDown
+        div(ng-repeat="doc in api")
+            h1(id="{{doc.id}}", ng-bind-html="doc.title" )
+            div(ng-if="doc.text", ng-bind-html="doc.text")
+            div(ng-repeat="doc1 in doc.content")
+                h2(id="{{doc1.id}}", ng-bind-html="doc1.title")
+                div(ng-if="doc1.text", ng-bind-html="doc1.text")
+                div(ng-repeat="doc2 in doc1.content")
+                    h3(id="{{doc2.id}}", ng-bind-html="doc2.title")
+                    div(ng-if="doc2.text", ng-bind-html="doc2.text")
+                    div(ng-repeat="doc3 in doc2.content")
+                        h4(id="{{doc3.id}}", ng-bind-html="doc3.title")
+                        div(ng-if="doc3.text", ng-bind-html="doc3.text")
+    
