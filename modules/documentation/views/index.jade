@@ -1,5 +1,5 @@
 
-div(ng-controller="DocController as docs")
+div
 	div#SideBar.animated.fadeInDown
 		h3.text INDEX
 		br
@@ -7,7 +7,7 @@ div(ng-controller="DocController as docs")
 			a.text(ng-href="/#/documentation#{{doc.index}}"): strong {{doc.index}}
 			div.menu(ng-repeat="sub in doc.content")
 				p.text.sub {{sub.index}}
-	div#ApiDocs.animated.fadeInDown
+	//- div#ApiDocs.animated.fadeInDown
 		h3.text API Documentation
 		br
 		div(ng-repeat="doc in docs.api")
@@ -19,3 +19,10 @@ div(ng-controller="DocController as docs")
 				h4.text {{sub.index}}
 				p.text.sub {{sub.api}}
 				hr.sub
+	div#ApiDocs.animated.fadeInDown
+		div(ng-repeat="doc in api")
+			h3(id="{{doc.id}}", ng-bind-html="doc.title" )
+			div(ng-repeat="doc1 in doc.content")
+				h4(id="{{doc1.id", ng-bind-html="doc1.title")
+				div(ng-repeat="doc2 in doc1.content")
+					div(ng-bind-html="doc2")

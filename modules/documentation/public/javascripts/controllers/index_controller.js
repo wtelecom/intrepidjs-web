@@ -16,119 +16,26 @@ angular.module('IntrepidJS').controller('DocController',
         '$state',
         function ($scope, $state){
             this.api = doc;
+            $scope.api = doc;
         }
     ]
 );
 
 var doc = [
-        {
-            index: "IntrepidJS",
-            api: "La instalacion de IntrepidJS Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugit totam optio ut et modi deserunt aspernatur pariatur. Fuga dolores nesciunt reiciendis earum explicabo accusamus ipsum temporibus, iure sunt consequuntur!",
-            content: [
-                {
-                    index: "About",
-                    api: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab obcaecati autem dolorum eos vel odit veniam unde ea, eligendi eveniet temporibus est ratione, voluptatibus nihil laborum blanditiis eum ipsa! Ullam!"
-                },
-                {
-                    index: "Join us?",
-                    api: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, recusandae. Vero accusantium pariatur amet nostrum, deleniti unde ducimus eos. Corrupti dolorum, ratione doloribus, voluptatum vel mollitia quidem quam rem ullam."
-                }
-            ]
-        },
-        {
-            index: "Prerequisites",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "Technologies",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "CLI",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "Packages",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "Intrepid Network",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "Config",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "2",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "3",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "4",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "5",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "6",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "7",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "2",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "3",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "4",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "5",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "6",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "7",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "2",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "3",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "4",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "5",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "6",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        },
-        {
-            index: "7",
-            api: "Un monton de paquetes que ni Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eveniet nisi sit quibusdam, officiis nostrum ut veritatis ab mollitia in, placeat, reiciendis ipsa natus nam. Modi, at, autem. Alias, voluptas."
-        }
-    ];
+    {
+        title: "<h1>Introducción (Comenzando con Intrepid)</h1>",
+        id: "introduction",
+        content: [
+            {
+                title: "<h2>Visión general</h2>",
+                id: "general",
+                content: ['<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href="http://opensource.org/licenses/MIT">MIT</a>.<p>']
+            },
+            {
+                title: "<h2>Requisitos</h2>",
+                id: "requirements",
+                content: ['<p>Para empezar a usar IntrepidJS, necesitas instalar algunas herramientas en tu sistema.</p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>']
+            }
+        ]
+    }
+];
