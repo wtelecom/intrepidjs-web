@@ -1,16 +1,45 @@
 
-div.apidocs
+div.apidocs.row
 
-    div#SideBar.animated.fadeInDown
+    div#SideBar.col-xs-12.col-sm-3.animated.fadeInDown
         h3.text INDEX
         br
+        //- div.navbar-example
+        //-     ul.nav.nav-stacked(role="tablist")
+        //-         li(role="tablist")
+        //-             a(href="#/documentation#introduction") hola
+        //-         li(role="tablist")
+        //-             a(href="#/documentation#general") adios
         div.menu(ng-repeat="doc in api")
             span.text.pointer(ng-click="goTo(doc.id)")
                 strong(ng-bind-html="doc.title")
             div.menu(ng-repeat="doc1 in doc.content")
                 span.text.pointer(ng-click="goTo(doc1.id)")
                     strong(ng-bind-html="doc1.title")
-    div#ApiDocs.animated.fadeInDown
+    div#ApiDocs.col-xs-12.col-sm-9.animated.fadeInDown
+        div(ng-repeat="doc in api")
+            h1(id="{{doc.id}}", ng-bind-html="doc.title" )
+            div(ng-if="doc.text", ng-bind-html="doc.text")
+            div(ng-repeat="doc1 in doc.content")
+                h2(id="{{doc1.id}}", ng-bind-html="doc1.title")
+                div(ng-if="doc1.text", ng-bind-html="doc1.text")
+                div(ng-repeat="doc2 in doc1.content")
+                    h3(id="{{doc2.id}}", ng-bind-html="doc2.title")
+                    div(ng-if="doc2.text", ng-bind-html="doc2.text")
+                    div(ng-repeat="doc3 in doc2.content")
+                        h4(id="{{doc3.id}}", ng-bind-html="doc3.title")
+                        div(ng-if="doc3.text", ng-bind-html="doc3.text")
+
+   //- div#SideBar.nav.nav-index.animated.fadeInDown
+        h3.text INDEX
+        br
+        div.nav.nav-tabs.menu(ng-repeat="doc in api" role="tablist")
+            span.text.pointer(ng-click="goTo(doc.id)")
+                strong(ng-bind-html="doc.title")
+            div.menu(ng-repeat="doc1 in doc.content")
+                span.text.pointer(ng-click="goTo(doc1.id)")
+                    strong(ng-bind-html="doc1.title")
+    //- div#ApiDocs.animated.fadeInDown
         div(ng-repeat="doc in api")
             h1(id="{{doc.id}}", ng-bind-html="doc.title" )
             div(ng-if="doc.text", ng-bind-html="doc.text")
