@@ -5,7 +5,7 @@
         "text": "",
         "content": [
             {
-                "id": "general",
+                "id": "generalView",
                 "title": "Visión general",
                 "text": "<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href='http://opensource.org/licenses/MIT'>MIT</a>.<p>",
                 "content": []
@@ -15,19 +15,120 @@
                 "title": "Requisitos",
                 "text": "<pre>Para empezar a usar IntrepidJS, </pre><p><pre>necesitas instalar algunas herramientas en tu sistema.</pre></p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
                 "content": []
-            },
+            }
+        ]
+    },
+    {
+        "id": "tutorial",
+        "title": "Tutorial",
+        "text": "",
+        "content": [
             {
-                "id": "other",
-                "title": "Other",
-                "text": "<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href='http://opensource.org/licenses/MIT'>MIT</a>.<p>",
+                "id": "firstSteps",
+                "title": "Primeros pasos: instalación",
+                "text": "",
                 "content": []
             },
             {
-                "id": "other1",
-                "title": "Other1",
-                "text": "<p>Para empezar a usar IntrepidJS, necesitas instalar algunas herramientas en tu sistema.</p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
+                "id": "userCreation",
+                "title": "Creación de usuarios",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstIntrepidJS",
+                "title": "Mi primer servidor IntrepidJS",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstBlog",
+                "title": "Mi primer modulo: un blog",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "widgets",
+                "title": "Widgets",
+                "text": "",
+                "content": [
+                    {
+                        "id": "carousel",
+                        "title": "Carrusel",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "twittertimeline",
+                        "title": "Twitter timeline",
+                        "text": "",
+                        "content": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "devGuide",
+        "title": "Guía de desarrollo",
+        "text": "",
+        "content": [
+            {
+                "id": "dirStructure",
+                "title": "Estructura de directorios",
+                "text": "<h2> Estructura de directorios</h2> <p>IntrepidJS sigue un patrón estructural rígido, aunque es modificable en ciertos aspectos, se debe respetar la estructura mientras sea posible puesto que ésta ha sido diseñada para el correcto funcionamiento de todas las partes.</p> <h3>Estructura principal:</h3> <h4>data</h4> <p> En esta carpeta se guarda la información referente a los modelos de datos de la aplicación.<br /> Se compone de dos carpetas internas.  </p> <h5>Models</h5> <p>Al exportar un modelo en esta carpeta automáticamente se genera una API 'al vuelo'. La sintaxis para exportar un nuevo modelo se basa en los esquemas definidos en Moongose y es como en el siguiente ejemplo: <pre> var setting = mongoose.model('Setting', settingSchema);<br /> module.exports = setting; </pre> </p> <h5>Schemas</h5> <p> Esta carpeta contiene los modelos de datos que se definen para la base de datos de MongoDB, al igual que en cualquier aplicación que use <a href='http://mongoosejs.com/docs/guide.html'> mongoose</a>.  </p> <h4>libs</h4> <p> En esta carpeta se guarda el contenido referente a utilidades que se necesiten para los controladores o para cualquier parte de la aplicación. Sirven como soporte y ayuda para la creación de módulos en el backend.  </p> <h4>locales</h4> <p> En esta carpeta se guardan los archivos para hacer la internalización.  Por defecto IntrepidJS utiliza 2 locales, es y en. <br /> El motor de plantillas actual es Jade, y por tanto, al utilizar dentro de cualquier fichero Jade la sintaxis: <pre> label= __(‘Some text’) </pre> Automáticamente se incluirá la cadena “Some text” en cada uno de los archivos locales para su posterior traducción en internalización.  </p> <h4>middlewares</h4> <p> En esta carpeta se almacenan todos los middlewares que se quieran utilizar en las peticiones a la API. Estos middlewares ayudan a componer las consultas de la API de manera modular y a mantener el código bien organizado.  </p> <h4>modules</h4> <p> Dado que IntrepidJS es el core de todo el framework, dispone de una carpeta específica para módulos que se desarrollen sobre él y se guardan en la carpeta módulos. <br /> Cada módulo tiene la misma estructura que un intrepidJS, pero aplicada a cada módulo y al ser un módulo no necesita configurar nada referente al servidor de express ya que de eso se encarga el propio IntrepidJS.  </p> <h4>public</h4> <p> En esta carpeta se guarda todo lo referente al front-end y se compone de 4 subcarpetas: </p> <h5>files</h5> <p> Se utiliza para guardar los ficheros que se vayan a utilizar. Por ejemplo, las imágenes por defecto para los perfiles de usuario.  </p> <h5>javascripts</h5> <p> Guarda todo lo referente a javascript para el front-end y principalmente todos los archivos de AngularJS con una <a href='http://scotch.io/tutorials/javascript/angularjs-best-practices-directory-structure#standard-structure'>estructura estándar de AngularJS</a> </p> <h5>stylessheets</h5> <p> Esta carpeta contiene los archivos referentes a estilos css.  </p> <h5>vendor</h5> <p> Esta carpeta contiene los archivos adicionales utilizados en el front-end para el renderizado de la web más. Algunos componentes vienen predefinidos a con las versiones que se utilizan en IntrepidJS por defecto como, por ejemplo, la versión de Angular, pero también dispone de un archivo bower.json con el que se pueden configurar dependencias adicionales.  </p> <h4>routes</h4> <p> IntrepidJS utiliza ui-router para las rutas de la aplicación web y en esta carpeta se encuentran los archivos que configuran cada una de estas rutas y el funcionamiento de las mismas.  </p> <h4>utils</h4> <p> Esta carpeta contiene código con las utilidades generales que provee por defecto IntrepidJS.  </p> <h4>views</h4> <p>El motor de templates que utiliza IntrepidJS es Jade y en esta carpeta se guardan todos los templates que se utilizan IntrepidJS, tanto para las páginas generales de la aplicación como para los highlights.  </p> <h4>widgets</h4> <p> En IntrepidJS se pueden definir widget para añadirlos en la pantalla principal o en cualquier vista. Estos widgets tienen por defecto carácter social y por defecto, de momento, sólo está desarrollado el widget para el timeline de Twitter.  </p>",
+                "content": []
+            },
+            {
+                "id": "backend",
+                "title": "Backend",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "frontend",
+                "title": "Frontend",
+                "text": "",
                 "content": []
             }
         ]
+    },
+    {
+        "id": "security",
+        "title": "Seguridad",
+        "text": "",
+        "content": [
+            {
+                "id": "roles",
+                "title": "Gestión de roles y perfiles",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "cli",
+        "title": "CLI",
+        "text": "",
+        "content": [
+            {
+                "id": "interpidjs_cli",
+                "title": "Interpidjs-cli",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "make_js",
+                "title": "Make.js",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "roadmap",
+        "title": "Roadmap",
+        "text": "",
+        "content": []
     }
 ]

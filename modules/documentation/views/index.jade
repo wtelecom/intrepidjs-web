@@ -2,7 +2,7 @@
 div.apidocs.row
 
     div#SideBar.col-xs-12.col-sm-3.animated.fadeInDown
-        h3.text INDEX
+        h3.text Index
         br
         //- div.navbar-example
         //-     ul.nav.nav-stacked(role="tablist")
@@ -16,7 +16,7 @@ div.apidocs.row
             div.menu(ng-repeat="doc1 in doc.content")
                 span.text.pointer(ng-click="goTo(doc1.id)")
                     strong(ng-bind-html="doc1.title")
-    div#ApiDocs.col-xs-12.col-sm-9.animated.fadeInDown
+    div#ApiDocs.col-xs-12.col-sm-8.animated.fadeInDown
         div(ng-repeat="doc in api")
             h1(id="{{doc.id}}", ng-bind-html="doc.title" )
             div(ng-if="doc.text", ng-bind-html="doc.text")

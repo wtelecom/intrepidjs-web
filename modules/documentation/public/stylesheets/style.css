@@ -6,8 +6,9 @@
 	top: 0px;
 	bottom: 0px;
 	width: 250px;*/
-	border-right: 1px solid #DFE2E7;
+	/*border-right: 1px solid #DFE2E7;*/
 	/*margin-top: 75px;*/
+    padding-left: 40px;
 }
 #ApiDocs{
 	/*float:left;*/
