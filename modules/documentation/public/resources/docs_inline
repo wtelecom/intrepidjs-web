@@ -278,227 +278,19 @@ Cada módulo tiene la misma estructura que un intrepidJS, pero aplicada a cada m
 
 <b>archivo: routes/api/users.js</b> <pre> <br> ...  <br> var existUser = rek('middlewares/users/load_user'); <br> ...  <br> routes[settings.apiPrefix + '/users/exist/:name'] = { <br> methods: ['get'], <br> middleware: [existUser], <br> fn: function(req, res, next) { <br> if (!req.user) { <br> res.send({available: true}); <br> } else { <br> res.send({available: false}); <br> } <br> } <br> }; </pre> <p>Como podemos ver, se recibe la petición diciendo que sólo se puede acceder por método GET, que se va a utilizar un middleware llamado <i>existUser</i> y que lo que se va a hacer al procesar la información es enviar al front-end si el usuario está disponible sólo si la variable req.user dispone de información del mismo.</p> <p>En la parte de middleware se hace referencia a la función que se importa en el middleware <i>load_user</i>, esta función es la encargada de añadir dentro de la variable <i>req</i> la propiedad <i>req.user</i>como se muestra a continuación:</p> <b>archivo: middleware/users/load_user.js</b> <pre> var rek = require('rekuire'), <br> userModel = rek('data/models/user/account'); <br> function loadUser(req, res, next) { <br> if (req.params.id) { <br> userModel.findOne({_id: req.params.id}, function(err, user) { <br> if (err) { <br> return next(err); <br> } <br> if (! user) { <br> return res.send('Not found', 404); <br> } <br> req.user = user; <br> next(); <br> }); <br> } <br> } <br> module.exports = loadUser; <br> </pre>
 
-<p>Los middlewares se pueden anidar uno tras otro, el orden en que aparecen en la lista de middlewares es el orden de ejecución de cada uno de ellos.</p>
+<p>Los middlewares se pueden anidar uno tras otro, el orden en que aparecen en la lista de middlewares es el orden de ejecución de cada uno de ellos.</p><p>Todos los middlewares, ya sean del core de IntrepidJS o los que se pertenezcan a cualquier módulo, por convención se ponen en la carpeta middlewares.</p><p>Si los middlewares son específicos para una funcionalidad se meten dentro de una carpeta con el nombre de la misma.</p><p>En el ejemplo anterior, <b>load_user</b> es un middleware específico de user, por lo tanto se debe añadir a la carpeta <i>user</i> dentro de middlewares.</p>
+<h3>Módulos</h3><p>Un módulo es una funcionalidad que añades a tu instancia de IntrepidJS. Podemos crear módulos utilizando el make.js:</p><pre> ./make.js createmodule my_first_module<br>Clonar en /home/soto/tmp/intrepidjs/modules/my_first_module...           	] 10%<br>[##########################################################################] 100%<br>my_first_module module created!</pre><p>Puedes consultar el apartado de creación de módulos LINK</p><p>Principalmente un módulo tiene una estructura de directorios similar al de una aplicación intrepid. LINK Las diferencias más sustanciales residen en los archivos settings.js y app.js</p><h4>settings.js</h4><p>En este archivo introduciremos la configuración del módulo. Es un archivo en formato json que será importado como tal desde la aplicación utilizando <pre>exports</pre> de Node.js. </p>
 
-<p>Todos los middlewares, ya sean del core de IntrepidJS o los que se pertenezcan a cualquier módulo, por convención se ponen en la carpeta middlewares.</p>
-
-<p>Si los middlewares son específicos para una funcionalidad se meten dentro de una carpeta con el nombre de la misma.</p>
-
-<p>En el ejemplo anterior, <b>load_user</b> es un middleware específico de user, por lo tanto se debe añadir a la carpeta <i>user</i> dentro de middlewares.</p>
-
-<h3>Módulos</h3>
-<p>Un módulo es una funcionalidad que añades a tu instancia de IntrepidJS. Podemos crear módulos utilizando el make.js:</p>
-<pre>
- ./make.js createmodule my_first_module
-<br>
-Clonar en /home/soto/tmp/intrepidjs/modules/my_first_module...           	] 10%
-<br>
-[##########################################################################] 100%
-<br>
-my_first_module module created!
-	</pre>
-Puedes consultar el apartado de creación de módulos LINK
-
-<p>Principalmente un módulo tiene una estructura de directorios similar al de una aplicación intrepid. LINK Las diferencias más sustanciales residen en los archivos settings.js y app.js</p>
-
-<h4>settings.js</h4>
-	<p>En este archivo introduciremos la configuración del módulo. Es un archivo en formato json que será importado como tal desde la aplicación utilizando <pre>exports</pre> de Node.js. </p>
-
-<p>Los campos mas importantes son:</p>
-	<ul><li>name y description: son el nombre y la descripción del módulo. El nombre no tiene porque coincidir con el directorio dónde se incluye el código. La descripción aparecer en la vista de administración, en la activación de módulos.</li>
-	<li>modulePath: contiene el path absoluto del módulo</li>
-	<li>modelsPath, schemasPath, viewsPath, publicPath, routesPath: contienen las rutas absolutas de cada uno de los elementos que representan. </li>
-	<li>highlights: variable booleana que indicará si se podrán añadir los highlights que se construyan en este módulo. Esto se reflejará dentro del menú de administración, apartado highlights LINK A SECCIÓN USUARIO: HIGHLIGHTS</li>
-	<li>Actions: se define el estado de ui-routes en la carpeta del módulo <pre>public/javascript/routes/</pre> para cargar un partial dentro del controlador definido.</li>
-	<li>onTheFlyMiddlewares: en este apartado podremos definir sobre un schema un middleware que se ejecutará al final de la secuencia de ejecuciones.
-Por ejemplo, suponiendo que tuviéramos un schema photos con las siguientes líneas añadiríamos middlewares para las llamadas getAll y create:
-<pre>
-exports.onTheFlyMiddlewares = {
-<br>
-   photos: {
-<br>
-       get: null,
-<br>
-       getAll: exports.middlewaresPath + 'filter_my_photos',
-<br>
-       create: exports.middlewaresPath + 'save_imageb64',
-<br>
-       update: null,
-<br>
-       delete: null,
-<br>
-   }
-<br>
-};
-</pre>
-Para que esto sea efectivo tendremos que tener dos archivos en <pre>middlewaresPath</pre> llamados <pre>filter_my_photos</pre>
-</li>
-	</ul>
-<h4>app.js</h4>
-En este archivo define los métodos principales del módulo. Los más importantes son:
-<ul>
-<li>
-<h5>setModuleApp</h5>
-<p>Esta función es la responsable de inicializar el módulo en la aplicación. Por defecto su comportamiento consiste en establecer el path del propio módulo, el path de public y el nombre del módulo</p>
-</li>
-<li>
-<h5>setModuleSections</h5>
-<p>IntrepidJS permite crear secciones dentro de los módulos. Esta operación se realiza cundo se carguen nuevos módulos en nuestra aplicación.</p>
-<li>
-<h5>setModuleRoutes</h5>
-<p></p>
-<p>Cada section se configurará en el settings.js como un objeto tal que:
-<pre>
-section = {
-<br>
-        name: 'Gestión de imágenes',
-<br>
-        route: '/myPhotos'
-<br>
-}
-<br>
-<p>Esta funcionalidad de IntrepidJS nos permitirá  COMPLETAR</p>
-</pre></p>
-</li>
-<li>
-<h5>removeReferences</h5>
-<p>IntrepidJS nos permite activar y desactivar nuestros módulos de cara a su uso por parte del usuario. Esta función será llamadacuandoo un usuario desactive un módulo desde el panel de administración</p>
-</li>
-</ul>
-<h4>libs</h4>
- (la inclusión de highlights, hablar de los public)
-
-<h4>Administración</h4>
-<p> Para la administración de los módulos de IntrepidJs, los directorios y ficheros principales son: </p>
-<ul>
-	<li>..[module_name]/public/js/controllers/admin_controller.js: Aquí se definirá el modelo de las acciones que se realizan desde la vista, para más información ir al apartado controladores</li>
-	<li>..[module_name]/public/routes/admin.js : en este archivo se definen las rutas de Angular a las que se les asigna un estado, un controlador y el div al que va a añadirse la vista cuando el estado sea referenciado por el atributo ui-sref.
-		<pre>
-	$stateProvider.
-<br>
-                state('[NOMBRE DEL ESTADO]', {
-<br>
-                    url: '[URL/A/SOLICITAR]',
-<br>
-                    views: {
-<br>
-                        '[DIV_DONDE INCLUIR_LA_VISTA]':
-<br>
-                            {
-<br>
-                                templateUrl: '/PATH/TO/TEMPLATE',
-<br>
-                                controller: '[NombreAngularController]'
-<br>
-                            }
-<br>
-                    }
-		</pre>
-	</li>
-<li>..[module_name]/routes/admin.js : Aquí se definen las rutas de express, al crear un módulo se crea una por defecto que puede utilizarse como esqueleto.
-<pre>
-routes['/' + m_settings.route_prefix + '/admin/parent'] =  {
-<br>
-    methods: ['get'],
-<br>
-    middleware: [],
-<br>
-    fn: function(req, res, next) {
-<br>
-        res.render(m_settings.viewsPath + 'admin/parent');
-<br>
-    }
-<br>
-};
-	</pre>
-</li>
-	<li>..[module_name]/views/admin/ : Éste es el directorio para almacenar las vistas .jade referentes a la administración de los módulos.
-</li>
-<h4>Rutas (incluir aquí API creadas al vuelo sobre schemas)</h4>
-IntrepidJS usa Angular como engine para la realización de vistas (frontend). Para facilitar esta tarea IntrepidJS crea APIS de manera transparente para el desarrollador.
-
-Esta funcionalidad está provista por el módulo situado en 'lib/crud_operations'. Este módulo crea una API para las operaciones CRUD (creación, lectura, actualización y borrado) de cada schema de base de datos.
-
-Podemos usar como ejemplo el del blog. En este caso este blog tiene un sólo esquema, que hemos llamado post. Al iniciar el servidor de node podemos ver los siguientes mensajes:
-<pre>
-	(...)
-<br>
- # GET /api/v1/blog/post/:id
-<br>
- # GET /api/v1/blog/post
-<br>
- # POST /api/v1/blog/post/create
-<br>
- # POST /api/v1/blog/post/:id/update
-<br>
- # POST /api/v1/blog/post/:id/delete
-<br>
-(...)
-<br>
-</pre>
-
-IntrepidJS ha creado las operaciones CRUD por ti, así no tendrás que preocuparte de ello.
-
-La URI está compuesta por el prefijo 'blog' que se establece en el archivo de configuración del módulo (settings.js) en lel atributo route_prefix, 'post' como y por último el nombre de la operación. Por otro lado hemos considerado de buen uso anteponer al nombre del esquema 'v1' para recordar que esta API cambiará y estamos en la primera versión.
-(borrar utilidades( make.js) e incluir en CLI)
-(meter highlights en partials)
-(perfil pasa parte a Seguridad)
-(Admin  hay que incluir cada parte en seguridad, y módulos)
-<h3>public</h3>
-<h3>routes</h3>
-<p>IntrepidJS tiene una API que por defecto se utiliza para comunicar la parte del front-end con la del back-end, y esta carpeta define las rutas API del backend general.
-<p>Esta API general puede ser utilizada por cualquier módulo que se desarrolle en IntrepidJS.</p>
-<p>Dentro del archivo settings.js se definen los diferentes prefijos usados para las funcionalidades generales</p>
-<p>A continuación se enumeran los bloques de rutas y la descripción de cada uno:<p>
-<ul>
-<li>
-<b>accounts:</b> define las rutas referentes a la autenticación tales como login, signup y logout. El prefijo para usar las operaciones de cuentas de usuario es <pre> accounts </pre>
-</li>
-<li><b>admin:</b> define las rutas referentes a las acciones de administrador. El prefijo de rutas para el administrador se define en <pre> settings.siteRoutes.admin </pre>  </li>
-<li><b>api:</b> define las rutas que hacen uso de los modulos del core de IntrepidJS mediante API como por ejemplo mail, users, permisos, etc. El prefijo de esta sección se define en <pre> settings.apiPrefix</pre></li>
-<li><b>chat:</b> define la ruta para los partials que se usan en el chat. El prefijo para el chat es
-<pre>
-chat
-</pre></li>
-<li><b>profile:</b> define las rutas que gestionan el perfil de cada usuario. El prefijo utilizado para esta sección es
-<pre>
-profile
-</pre></li>
-<li><b>generales:</b> existen otras rutas generales que no tienen catalogación y que se encuentran en el directorio raiz de la carpeta routes. </p><p>Las rutas generales más importantes son las que se encargan de generar la API de los modelos de mongo definidos dinámicamente</p> </li>
-</ul>
-
-<h3>utils</h3>
-<p>Esta carpeta contiene utilidades generales que se utilizan en la parte core de IntrepidJS y que pueden usarse en cualquier módulo que se quiera desarrollar</p>
-<p>A continuación se enumeran las utilidades y una breve descripción de cada una:<p>
-<ul>
-<li>
-<b>socketio_events/chat.js:</b> configura el chat interno de IntrepidJS.
-</li>
-<li><b>csv_engine.js:</b> utilidad para manejar archivos CSV en un stream. </li>
-<li><b>form_validation.js:</b> utilidad para validar formularios con callback de variables de tipo <i>color, date, ObjectId y base64</i> </li>
-<li><b>hash.js:</b> utilidad basada en <a href='https://github.com/visionmedia/node-pwd'>node-pwd</a> para generar hashes de un string con callbacks. </li>
-<li><b>oauth_events.js:</b> utilidad interna para la inicialización de los eventos de autenticación. </li>
-<li><b>passport_strategies.js:</b> define las estrategias de autenticación mediante passport de IntrepidJS. </li>
-<li><b>post_validator.js:</b> utilidad para sanear la salida de un objecto validado (sólo modifica los objetos tipo ObjectID). </li>
-<li><b>request_engine.js:</b> utilidad para manejar peticiones (requests) básicas. </li>
-<li><b>socketio.js:</b> utilidad interna que para manejar los eventos de socket.io </li>
-<li><b>urls.js:</b> utilidad para comprobar si un string es una url válida. </li>
-</ul>
+<p>Los campos mas importantes son:</p><ul><li>name y description: son el nombre y la descripción del módulo. El nombre no tiene porque coincidir con el directorio dónde se incluye el código. La descripción aparecer en la vista de administración, en la activación de módulos.</li>	<li>modulePath: contiene el path absoluto del módulo</li>	<li>modelsPath, schemasPath, viewsPath, publicPath, routesPath: contienen las rutas absolutas de cada uno de los elementos que representan. </li>	<li>highlights: variable booleana que indicará si se podrán añadir los highlights que se construyan en este módulo. Esto se reflejará dentro del menú de administración, apartado highlights LINK A SECCIÓN USUARIO: HIGHLIGHTS</li><li>Actions: se define el estado de ui-routes en la carpeta del módulo <pre>public/javascript/routes/</pre> para cargar un partial dentro del controlador definido.</li><li>onTheFlyMiddlewares: en este apartado podremos definir sobre un schema un middleware que se ejecutará al final de la secuencia de ejecuciones. <br>Por ejemplo, suponiendo que tuviéramos un schema photos con las siguientes líneas añadiríamos middlewares para las llamadas getAll y create:<pre>exports.onTheFlyMiddlewares = {<br>   photos: {<br>get: null,<br>getAll: exports.middlewaresPath + 'filter_my_photos',<br>create: exports.middlewaresPath + 'save_imageb64',<br>update: null,<br>delete: null,<br>}<br>};</pre>Para que esto sea efectivo tendremos que tener dos archivos en <pre>middlewaresPath</pre> llamados <pre>filter_my_photos</pre></li></ul><h4>app.js</h4>En este archivo define los métodos principales del módulo. Los más importantes son:
 
 
-<h3>views</h3>
-<h3>Widget (explicar schema y modelo para un widget)</h3>
-<p>Los widgets tienen una estructura interna del mismo tipo que la general de IntrepidJS descrita en el punto este , y a continuación se definen específicamente:
-</p>
-<ul>
-<li>middlewares : Los middlewares para realizar operaciones adicionales sobre las peticiones generadas al vuelo por la API irán aquí
-</li>
-<li>public : Los scripts tanto de frontend como de dependencias se incluirán en esta carpeta.
-</li>
-<li>routes : Aquí en el archivo index.js se colocan las vistas a parciales para AngularJS, y en api/index.js irán las llamadas a la API necesarias para cargar el contenido en los widgets.
-</li>
-<li>views : los parciales del widget  se colocan en la subcarpeta partials y los relativos a la vista de administración para la configuración del propio widget en admin_partials
-</li>
+<ul><li><h5>setModuleApp</h5><p>Esta función es la responsable de inicializar el módulo en la aplicación. Por defecto su comportamiento consiste en establecer el path del propio módulo, el path de public y el nombre del módulo</p></li><li><h5>setModuleSections</h5><p>IntrepidJS permite crear secciones dentro de los módulos. Esta operación se realiza cundo se carguen nuevos módulos en nuestra aplicación.</p><li><h5>setModuleRoutes</h5><p></p><p>Cada section se configurará en el settings.js como un objeto tal que:<pre>section = {<br>name: 'Gestión de imágenes',<br>route: '/myPhotos'<br>}<br><p>Esta funcionalidad de IntrepidJS nos permitirá  COMPLETAR</p></pre></p></li><li><h5>removeReferences</h5><p>IntrepidJS nos permite activar y desactivar nuestros módulos de cara a su uso por parte del usuario. Esta función será llamadacuandoo un usuario desactive un módulo desde el panel de administración</p></li></ul><h4>libs</h4>(la inclusión de highlights, hablar de los public)<h4>Administración</h4><p> Para la administración de los módulos de IntrepidJs, los directorios y ficheros principales son: </p><ul><li>..[module_name]/public/js/controllers/admin_controller.js: Aquí se definirá el modelo de las acciones que se realizan desde la vista, para más información ir al apartado controladores</li><li>..[module_name]/public/routes/admin.js : en este archivo se definen las rutas de Angular a las que se les asigna un estado, un controlador y el div al que va a añadirse la vista cuando el estado sea referenciado por el atributo ui-sref.<pre>$stateProvider.<br>state('[NOMBRE DEL ESTADO]', {<br>url: '[URL/A/SOLICITAR]',<br>views: {<br>'[DIV_DONDE INCLUIR_LA_VISTA]':<br>{<br>templateUrl: '/PATH/TO/TEMPLATE',<br>controller: '[NombreAngularController]'<br>}<br>}</pre></li><li>..[module_name]/routes/admin.js : Aquí se definen las rutas de express, al crear un módulo se crea una por defecto que puede utilizarse como esqueleto.<pre>routes['/' + m_settings.route_prefix + '/admin/parent'] =  {<br>methods: ['get'],<br>middleware: [],<br>fn: function(req, res, next) {<br>res.render(m_settings.viewsPath + 'admin/parent');<br>}<br>};</pre></li><li>..[module_name]/views/admin/ : Éste es el directorio para almacenar las vistas .jade referentes a la administración de los módulos.</li></ul>
+
+<h4>Rutas (incluir aquí API creadas al vuelo sobre schemas)</h4><p>IntrepidJS usa Angular como engine para la realización de vistas (frontend). Para facilitar esta tarea IntrepidJS crea APIS de manera transparente para el desarrollador.</p><p>Esta funcionalidad está provista por el módulo situado en 'lib/crud_operations'. Este módulo crea una API para las operaciones CRUD (creación, lectura, actualización y borrado) de cada schema de base de datos.</p><p>Podemos usar como ejemplo el del blog. En este caso este blog tiene un sólo esquema, que hemos llamado post. Al iniciar el servidor de node podemos ver los siguientes mensajes:</p><pre>(...)<br># GET /api/v1/blog/post/:id<br># GET /api/v1/blog/post<br># POST /api/v1/blog/post/create<br># POST /api/v1/blog/post/:id/update<br># POST /api/v1/blog/post/:id/delete<br>(...)<br></pre><p>IntrepidJS ha creado las operaciones CRUD por ti, así no tendrás que preocuparte de ello.</p><p>La URI está compuesta por el prefijo 'blog' que se establece en el archivo de configuración del módulo (settings.js) en lel atributo route_prefix, 'post' como y por último el nombre de la operación. Por otro lado hemos considerado de buen uso anteponer al nombre del esquema 'v1' para recordar que esta API cambiará y estamos en la primera versión.</p><h3>public</h3><h3>routes</h3><p>IntrepidJS tiene una API que por defecto se utiliza para comunicar la parte del front-end con la del back-end, y esta carpeta define las rutas API del backend general.<p>Esta API general puede ser utilizada por cualquier módulo que se desarrolle en IntrepidJS.</p><p>Dentro del archivo settings.js se definen los diferentes prefijos usados para las funcionalidades generales</p><p>A continuación se enumeran los bloques de rutas y la descripción de cada uno:<p>
+
+<ul><li><b>accounts:</b> define las rutas referentes a la autenticación tales como login, signup y logout. El prefijo para usar las operaciones de cuentas de usuario es <pre> accounts </pre></li><li><b>admin:</b> define las rutas referentes a las acciones de administrador. El prefijo de rutas para el administrador se define en <pre> settings.siteRoutes.admin </pre>  </li><li><b>api:</b> define las rutas que hacen uso de los modulos del core de IntrepidJS mediante API como por ejemplo mail, users, permisos, etc. El prefijo de esta sección se define en <pre> settings.apiPrefix</pre></li><li><b>chat:</b> define la ruta para los partials que se usan en el chat. El prefijo para el chat es<pre>chat</pre></li><li><b>profile:</b> define las rutas que gestionan el perfil de cada usuario. El prefijo utilizado para esta sección es<pre>profile</pre></li><li><b>generales:</b> existen otras rutas generales que no tienen catalogación y que se encuentran en el directorio raiz de la carpeta routes. </p><p>Las rutas generales más importantes son las que se encargan de generar la API de los modelos de mongo definidos dinámicamente</p> </li></ul><h3>utils</h3><p>Esta carpeta contiene utilidades generales que se utilizan en la parte core de IntrepidJS y que pueden usarse en cualquier módulo que se quiera desarrollar</p><p>A continuación se enumeran las utilidades y una breve descripción de cada una:<p>
+
+<ul><li><b>socketio_events/chat.js:</b> configura el chat interno de IntrepidJS.</li><li><b>csv_engine.js:</b> utilidad para manejar archivos CSV en un stream. </li><li><b>form_validation.js:</b> utilidad para validar formularios con callback de variables de tipo <i>color, date, ObjectId y base64</i> </li><li><b>hash.js:</b> utilidad basada en <a href='https://github.com/visionmedia/node-pwd'>node-pwd</a> para generar hashes de un string con callbacks. </li><li><b>oauth_events.js:</b> utilidad interna para la inicialización de los eventos de autenticación. </li><li><b>passport_strategies.js:</b> define las estrategias de autenticación mediante passport de IntrepidJS. </li><li><b>post_validator.js:</b> utilidad para sanear la salida de un objecto validado (sólo modifica los objetos tipo ObjectID). </li><li><b>request_engine.js:</b> utilidad para manejar peticiones (requests) básicas. </li><li><b>socketio.js:</b> utilidad interna que para manejar los eventos de socket.io </li><li><b>urls.js:</b> utilidad para comprobar si un string es una url válida. </li></ul><h3>views</h3><h3>Widget (explicar schema y modelo para un widget)</h3><p>Los widgets tienen una estructura interna del mismo tipo que la general de IntrepidJS descrita en el punto este , y a continuación se definen específicamente:</p><ul><li>middlewares : Los middlewares para realizar operaciones adicionales sobre las peticiones generadas al vuelo por la API irán aquí</li><li>public : Los scripts tanto de frontend como de dependencias se incluirán en esta carpeta.</li><li>routes : Aquí en el archivo index.js se colocan las vistas a parciales para AngularJS, y en api/index.js irán las llamadas a la API necesarias para cargar el contenido en los widgets.</li><li>views : los parciales del widget  se colocan en la subcarpeta partials y los relativos a la vista de administración para la configuración del propio widget en admin_partials</li>
 
 
 
@@ -508,123 +300,9 @@ profile
 
 
 <h2>Frontend</h2>
-<h3>Vistas</h3>
-cómo usar los parciales de angular, lógica con rutas
-<p>Una vista es un componente que representa una página de la aplicación web.<br />
-Los componentes principales para desarrollar una vista es la creación del propio html (en el backend la vista está en formato Jade, antes de servirla, NodeJS renderiza el código Jade en HTML), el controlador AngularJS que maneja todos los elementos del mismo y el fichero de rutas/estados en AngularJS (actualmente estamos utilizando ui-router).</p>
-			<h4>Parciales</h4>
-<p>Para componer una vista completa se hace uso de elementos más pequeños que se enfocan en una funcionalidad más específica. Estos elementos se denominan parciales y pueden ser inyectados o incluidos en cualquier vista más genérica.
-<br />
-<p>Su utilidad es englobar una funcionalidad específica y poder incluirla dentro de otras vistas de manera sencilla.
-<br />
-Para implementar un parcial hay que definir la vista en un fichero Jade, crear un controlador Angular que maneja la lógica del parcial y una entrada en el fichero de rutas de angular para manejar la dirección de lo que queremos mostrar.
-<br />
-La principal diferencia entre una vista y un parcial es que la funcionalidad que se implementa en un parcial es mucho menor que la que se define en una vista completa, además el parcial puede ser usado en cualquier parte de la aplicación.
-<br />
-Por convención:
-<ul><li><p>Las vistas de los parciales se almacenan en la ruta:
-<pre>views/partials/partial_1.jade</pre>
-Las vistas de los módulos se almacenan en la ruta:
-<pre>modules/<module_name>/views/partials/partial_1.jade</pre>
-</p>
-</li>
-<li><p>Los controladores de los parciales se guardan en la ruta de controladores de AngularJS:
-<pre>public/javascript/controllers/partial_1_controller.js</pre></li>
-Los controladores de los módulos se almacenan en la ruta:
-<pre>modules/<module_name>/public/javascript/controllers/partial_1_controller.js</pre>
-</p>
-</li>
-<li><p>Las rutas de los parciales se guardan en la ruta de los ficheros de rutas de AngularJS:
-<pre>public/javascript/routes/partial_1_controller.js</pre></li>
-Las rutas de los módulos se almacenan en la ruta:
-<pre>modules/<module_name>/public/javascript/routes/partial_1_controller.js</pre>
-</p>
-</li>
-</ul>
 
-<p>Si el parcial es sólo visual, no es necesario asignarle un controlador.</p>
-
-<p>Para incluir un parcial dentro de una vista genérica, se utiliza la sintaxis de Jade, en el interior de la vista donde se quiere incluir el parcial se debe añadir la siguiente línea:</p>
-<pre>
-archivo: index_example.jade
-<br>
-h1= __(‘Main title’)
-<br>
-  div(id=”main_content”)
-<br>
-    .col-xs-12
-<br>
-      label= __(‘Some index content’)
-<br>
-        include ./partials/partial_1.jade
-</pre>
-
-		<h4>Highlight</h4>
-<p>Los highlights son elementos que resumen un módulo en una sola vista. Se podrían definir como un pequeño <b>parcial</b> que define lo más destacable de un módulo.</p>
-
-<p>Cada módulo puede tener sólo un highlight y se debe seleccionar en la parte de administrador.</p>
-
-<p>El layout principal de la aplicación web está diseñado para que pueda contener los highlights de los módulos seleccionados desde la parte de administración.</p>
-
-<p>El archivo Jade del highlight de cada módulo debe de estar en la ruta:</p>
-<pre>views/partials/highlight.jade</pre>
-
-<p>El controlador del highlight debe de estar junto a los demás controladores en:</p>
-<pre>public/javascripts/controllers/highlight_controller.js</pre>
-<br>
-<p>Un ejemplo de highlight lo puedes encontrar aquí:</p>
-<ul><li><a href=”https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/views/partials/highlights_step_one.jade”>Vista del highlight</a></li>
-<li><a href=”https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/public/javascripts/controllers/highlight_controller.js”>Ejemplo de controlador</a></li>
-</ul>
-<h3>Dependencias</h3>
-<h3>Controladores</h3>
-<p>
-Los controladores de IntrepidJS manejan los eventos recibidos desde la vista y ejecutan la lógica de su vista, delegando las funciones generales de la aplicación en servicios (se definirán en siguientes apartados). Procedemos a explicar a que vistas están asociados cada controlador y buenas prácticas de desarrollo a fecha a la que se escribió esta guía.
-Cada módulo que se crea en IntrepidJS genera automáticamente los esqueletos de los controladores index_controller.js y admin_controller.js.
-</p>
-<p>
-En <a href=”http://toddmotto.com/digging-into-angulars-controller-as-syntax”>este</a> enlace se definen una serie de buenas prácticas a la hora de implementar los controladores. Sugiere utilizarlos como modelos, de forma que la lógica de la aplicación quede delegada a servicios, los cuales están disponible desde cualquier parte de la aplicación.
-</p>
-<p>
-Como consejo adicional, recomendamos utilizar la sintaxis “Controller as “, que permite asignar un alias a los controladores y aclara en gran manera al desarrollador en caso de que se utilicen controladores anidados a la vez que elimina la necesidad de utilizar la variable $scope en el controlador para definir los funciones y variables internas a éstos, haciendo una implementación más al estilo POO.
-</p>
-<ul>
-<li>index_controller.js : Este controlador está asignado a la vista principal del módulo. </li>
-<li>admin_controller.js : Este controlador está asignado a la vista del panel de administración de IntrepidJS</li>
-</ul>
-<p>
-Como esqueleto para cualquier controlador pueden utilizarse estos mismos controladores, ya que por defectos vienen vacíos.
-</p>
-
-<h3>Rutas (estados de ui-routes de angular)</h3>
-<h3>Directivas</h3>
-<h3>Servicios</h3>
-<p>En cuanto a servicios disponibles para la aplicación de forma horizontal, existen los siguientes:</p>
-	<ul>
-<li>uSession : Getters y setters de los mensajes y los usuarios de la sesión</li>
-<li>fileReader : Servicio de lectura de ficheros</li>
-<li>permService : Servicio que gestiona los permisos de usuarios (get y set) </li>
-<li>restService : Envoltura del servicio $http</li>
-<li>socketIO : Servicio que proporciona eventos on y emit de socket.io</li>
-	</ul>
-<p>Los servicios pueden utilizarse desde cualquier parte de la aplicación, inyectándose como dependencia en cualquier parte de angular. Hay que tener en cuenta que cada servicio es un singleton. Pueden generarse como .factory o .service en AngularJS, a continuación un esqueleto de lo que sería un servicio estándar.</p>
-<pre>
-angular
-<br>
-	.module('moduleName')
-<br>
-	.factory('serviceName',  ['$http',function(){
-<br>
-return{
-<br>
-//CODE HERE
-<br>
-}
-<br>
-}
-<br>
-]);
-</pre>
+<h3>Vistas</h3><p>Una vista es un componente que representa una página de la aplicación web.<br />
+Los componentes principales para desarrollar una vista es la creación del propio html (en el backend la vista está en formato Jade, antes de servirla, NodeJS renderiza el código Jade en HTML), el controlador AngularJS que maneja todos los elementos del mismo y el fichero de rutas/estados en AngularJS (actualmente estamos utilizando ui-router).</p><h4>Parciales</h4><p>Para componer una vista completa se hace uso de elementos más pequeños que se enfocan en una funcionalidad más específica. Estos elementos se denominan parciales y pueden ser inyectados o incluidos en cualquier vista más genérica.<br /><p>Su utilidad es englobar una funcionalidad específica y poder incluirla dentro de otras vistas de manera sencilla.<br />Para implementar un parcial hay que definir la vista en un fichero Jade, crear un controlador Angular que maneja la lógica del parcial y una entrada en el fichero de rutas de angular para manejar la dirección de lo que queremos mostrar.<br />La principal diferencia entre una vista y un parcial es que la funcionalidad que se implementa en un parcial es mucho menor que la que se define en una vista completa, además el parcial puede ser usado en cualquier parte de la aplicación.<br />Por convención:<ul><li><p>Las vistas de los parciales se almacenan en la ruta:<pre>views/partials/partial_1.jade</pre>Las vistas de los módulos se almacenan en la ruta:<pre>modules/<module_name>/views/partials/partial_1.jade</pre></p></li><li><p>Los controladores de los parciales se guardan en la ruta de controladores de AngularJS:<pre>public/javascript/controllers/partial_1_controller.js</pre></li>Los controladores de los módulos se almacenan en la ruta:<pre>modules/<module_name>/public/javascript/controllers/partial_1_controller.js</pre></p></li><li><p>Las rutas de los parciales se guardan en la ruta de los ficheros de rutas de AngularJS:<pre>public/javascript/routes/partial_1_controller.js</pre></li>Las rutas de los módulos se almacenan en la ruta:<pre>modules/<module_name>/public/javascript/routes/partial_1_controller.js</pre></p></li></ul><p>Si el parcial es sólo visual, no es necesario asignarle un controlador.</p><p>Para incluir un parcial dentro de una vista genérica, se utiliza la sintaxis de Jade, en el interior de la vista donde se quiere incluir el parcial se debe añadir la siguiente línea:</p><pre>archivo: index_example.jade<br>h1= __(‘Main title’)<br>  div(id=”main_content”)<br>.col-xs-12<br>label= __(‘Some index content’)<br>include ./partials/partial_1.jade</pre><h4>Highlight</h4><p>Los highlights son elementos que resumen un módulo en una sola vista. Se podrían definir como un pequeño <b>parcial</b> que define lo más destacable de un módulo.</p><p>Cada módulo puede tener sólo un highlight y se debe seleccionar en la parte de administrador.</p><p>El layout principal de la aplicación web está diseñado para que pueda contener los highlights de los módulos seleccionados desde la parte de administración.</p><p>El archivo Jade del highlight de cada módulo debe de estar en la ruta:</p><pre>views/partials/highlight.jade</pre><p>El controlador del highlight debe de estar junto a los demás controladores en:</p><pre>public/javascripts/controllers/highlight_controller.js</pre><br><p>Un ejemplo de highlight lo puedes encontrar aquí:</p><ul><li><a href=”https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/views/partials/highlights_step_one.jade”>Vista del highlight</a></li><li><a href=”https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/public/javascripts/controllers/highlight_controller.js”>Ejemplo de controlador</a></li></ul><h3>Dependencias</h3><h3>Controladores</h3><p>Los controladores de IntrepidJS manejan los eventos recibidos desde la vista y ejecutan la lógica de su vista, delegando las funciones generales de la aplicación en servicios (se definirán en siguientes apartados). Procedemos a explicar a que vistas están asociados cada controlador y buenas prácticas de desarrollo a fecha a la que se escribió esta guía.Cada módulo que se crea en IntrepidJS genera automáticamente los esqueletos de los controladores index_controller.js y admin_controller.js.</p><p>En <a href=”http://toddmotto.com/digging-into-angulars-controller-as-syntax”>este</a> enlace se definen una serie de buenas prácticas a la hora de implementar los controladores. Sugiere utilizarlos como modelos, de forma que la lógica de la aplicación quede delegada a servicios, los cuales están disponible desde cualquier parte de la aplicación.</p><p>Como consejo adicional, recomendamos utilizar la sintaxis “Controller as “, que permite asignar un alias a los controladores y aclara en gran manera al desarrollador en caso de que se utilicen controladores anidados a la vez que elimina la necesidad de utilizar la variable $scope en el controlador para definir los funciones y variables internas a éstos, haciendo una implementación más al estilo POO.</p><ul><li>index_controller.js : Este controlador está asignado a la vista principal del módulo. </li><li>admin_controller.js : Este controlador está asignado a la vista del panel de administración de IntrepidJS</li></ul><p>Como esqueleto para cualquier controlador pueden utilizarse estos mismos controladores, ya que por defectos vienen vacíos.</p><h3>Rutas (estados de ui-routes de angular)</h3><h3>Directivas</h3><h3>Servicios</h3><p>En cuanto a servicios disponibles para la aplicación de forma horizontal, existen los siguientes:</p><ul><li>uSession : Getters y setters de los mensajes y los usuarios de la sesión</li><li>fileReader : Servicio de lectura de ficheros</li><li>permService : Servicio que gestiona los permisos de usuarios (get y set) </li><li>restService : Envoltura del servicio $http</li><li>socketIO : Servicio que proporciona eventos on y emit de socket.io</li></ul><p>Los servicios pueden utilizarse desde cualquier parte de la aplicación, inyectándose como dependencia en cualquier parte de angular. Hay que tener en cuenta que cada servicio es un singleton. Pueden generarse como .factory o .service en AngularJS, a continuación un esqueleto de lo que sería un servicio estándar.</p><pre>angular<br>.module('moduleName')<br>.factory('serviceName',  ['$http',function(){<br>return{<br>//CODE HERE<br>}<br>}<br>]);</pre>
 
 
 
@@ -632,121 +310,23 @@ return{
 
 
 <h1>Seguridad</h1>
+
 <h2>Incluir un UNDER CONSTRUCTION, PRE ALPHA</h2>
 <h2>Gestión de roles y perfiles (coger información de punto Perfil)</h2>
-<p>Por defecto el único rol creado es el de administrador: admin. Para añadir más roles o asignarlos a los usuarios se debe entrar en el Panel de Control (<a href=”#administracion_roles”>ir a administración de roles </a>)</p>
-
-<p>Una vez creados los roles, éstos se pueden utilizar dentro de la aplicación para comprobar que se pueden realizar determinadas acciones.</p>
-
-<p>Un ejemplo de uso de un rol dentro de la aplicación se localiza en el fichero myApp\middlewares\authorization.js y en éste caso se comprueba si el usuario tiene rol de administrador:</p>
-<pre>
-...
-<br>
-function hasAuthorization(model) {
-<br>
-    return function(req, res, next) {
-<br>
-	...
-<br>
-	 var isAdmin = function() {
-<br>
-		return _.contains(user.roles, 'admin');
-<br>
-	    };
-<br>
-       ...
-<br>
-}
-<br>
-…
-</pre>
 
 
-<p>Otro ejemplo: myApp\views\header.jade </p>
-<pre>
-...
-<br>
-   if (_.contains(user.roles, 'admin'))
-<br>
-   	li
-<br>
-		a(ui-sref='admin.dashboard')
-<br>
-			i.fa.fa-tachometer.fa-fw
-<br>
-			&nbsp;
-<br>
-			span= __('Control panel')
-<br>
-	li.divider
-<br>
-....
-</pre>
+<p>Por defecto el único rol creado es el de administrador: admin. Para añadir más roles o asignarlos a los usuarios se debe entrar en el Panel de Control (<a href=”#administracion_roles”>ir a administración de roles </a>)</p><p>Una vez creados los roles, éstos se pueden utilizar dentro de la aplicación para comprobar que se pueden realizar determinadas acciones.</p>
 
-<p>Hay que destacar la función “checkPermissions(permissions)“ alojada en el myApp/middlewares/check_permissions.js. A través de esta función podremos comprobar si un usuario tiene todos los roles deseados.</p>
+<p>Un ejemplo de uso de un rol dentro de la aplicación se localiza en el fichero myApp/middlewares/authorization.js y en éste caso se comprueba si el usuario tiene rol de administrador:</p><pre>...<br>function hasAuthorization(model) {<br>return function(req, res, next) {<br>...<br>var isAdmin = function() {<br>return _.contains(user.roles, 'admin');<br>};<br>...<br>}<br>…</pre><p>Otro ejemplo: myApp/views/header.jade </p><pre>...<br>if (_.contains(user.roles, 'admin'))<br>li<br>a(ui-sref='admin.dashboard')<br>i.fa.fa-tachometer.fa-fw<br>&nbsp;<br>span= __('Control panel')<br>li.divider<br>....</pre><p>Hay que destacar la función “checkPermissions(permissions)“ alojada en el myApp/middlewares/check_permissions.js. A través de esta función podremos comprobar si un usuario tiene todos los roles deseados.</p>
 
 
 <h1>CLI</h1>
 <h2> Intrepidjs-cli </h2>
-<p>El CLI de IntrepidJS se llama intrepidjs-cli. Se encarga de desplegar una instancia de IntrepidJS. <br />
-Para instalarlo debes ejecutar lo siguiente:</p>
-<pre>
-$ [sudo] npm install -g intrepidjs-cli@latest
-</pre>
-<p>
-Para crear un nuevo proyecto debes ejecutar lo siguiente:
-</p>
-<pre>
-$ intrepidjs-init <myApp>
-</pre>
-<p>Con esto tienes una instancia de IntrepidJS en el que puedes empezar a trabajar.</p>
+<p>El CLI de IntrepidJS se llama intrepidjs-cli. Se encarga de desplegar una instancia de IntrepidJS. <br />Para instalarlo debes ejecutar lo siguiente:</p><pre>$ [sudo] npm install -g intrepidjs-cli@latest</pre><p>Para crear un nuevo proyecto debes ejecutar lo siguiente:</p><pre>$ intrepidjs-init <myApp></pre><p>Con esto tienes una instancia de IntrepidJS en el que puedes empezar a trabajar.</p>
+
 <h2>Make.js</h2>
 
-<p>
-Cada instancia de IntrepidJS posee su propio CLI, para utilizarlo debes hacer lo siguiente:
-</p>
-	<pre>
-$ cd myApp
-<br />
-$ ./make.js
-</pre>
-<p>Actualmente, el CLI dispone de dos utilidades:</p>
-<ul>
-<li>
-<h3>createmodule</h3>
-<p>A través de este comando puedes crear módulos</p>
-<pre> $ ./make.js createmodule my_first_module</pre>
-	</li>
-	<li>
-<h3>loaddata</h3>
-<p>A través de este comando puedes introducir datos por defecto en los esquemas de tus módulos. Es útil cuando se quiere inicializar la base de datos con información no modificable.</p>
-<br />
-<pre> $ ./make.js loaddata my_first_module</pre>
-<p>Antes debes crear dentro del módulo correspondiente, en su ruta, un fichero JSON con tus datos:<p>
-<pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre>
-
-<p>Cuando se ejecuta el comando, se crea un esquema con el mismo nombre que el fichero generador y se vuelcan los datos en su interior.
-<br />
-
-La sintaxis mínima del fichero json es la siguiente:</p>
-<pre>
-{
-<br>
-    'wrap': {
-<br>
-	...
-<br>
-	     }
-<br>
-}
-</pre>
-	</li>
-	<li>
-<h3>createwidget</h3>
-<h4>En construcción</h4>
-<p>Creará widgets funcionales.</p>
-</li>
-</ul>
+<p>Cada instancia de IntrepidJS posee su propio CLI, para utilizarlo debes hacer lo siguiente:</p><pre>$ cd myApp<br />$ ./make.js</pre><p>Actualmente, el CLI dispone de dos utilidades:</p><ul><li><h3>createmodule</h3><p>A través de este comando puedes crear módulos</p><pre> $ ./make.js createmodule my_first_module</pre></li><li><h3>loaddata</h3><p>A través de este comando puedes introducir datos por defecto en los esquemas de tus módulos. Es útil cuando se quiere inicializar la base de datos con información no modificable.</p><br /><pre> $ ./make.js loaddata my_first_module</pre><p>Antes debes crear dentro del módulo correspondiente, en su ruta, un fichero JSON con tus datos:<p><pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre><p>Cuando se ejecuta el comando, se crea un esquema con el mismo nombre que el fichero generador y se vuelcan los datos en su interior.<br />La sintaxis mínima del fichero json es la siguiente:</p><pre>{<br>'wrap': {<br>...<br>}<br>}</pre></li><li><h3>createwidget</h3><h4>En construcción</h4><p>Creará widgets funcionales.</p></li></ul>
 
 
 
