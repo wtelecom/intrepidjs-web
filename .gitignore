@@ -6,7 +6,6 @@ node_modules/*
 .sass-cache/
 themes/
 _theme_vars.scss
-locales/*
 !locales/empty
 dump.rdb
 *.old.*
