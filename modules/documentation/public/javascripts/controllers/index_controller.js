@@ -20,6 +20,9 @@ angular.module('IntrepidJS').controller('DocController',
         function ($scope, $state, $location, $anchorScroll, i18n){
             $anchorScroll.yOffset = 75;
             var lang = i18n.userLanguage;
+            if (lang != 'es' && lang != 'en') {
+                lang = 'es';
+            }
             $.getJSON( "documentation/public/resources/doc_" + lang + ".json", function( data ) {
               $scope.api = data;
               });
