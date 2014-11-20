@@ -16,9 +16,11 @@ angular.module('IntrepidJS').controller('DocController',
         '$state',
         '$location',
         '$anchorScroll',
-        function ($scope, $state, $location, $anchorScroll){
+        'i18n',
+        function ($scope, $state, $location, $anchorScroll, i18n){
             $anchorScroll.yOffset = 75;
-            $.getJSON( "documentation/public/resources/apidoc.json", function( data ) {
+            var lang = i18n.userLanguage;
+            $.getJSON( "documentation/public/resources/doc_" + lang + ".json", function( data ) {
               $scope.api = data;
               });
             $scope.goTo = function(id) {
