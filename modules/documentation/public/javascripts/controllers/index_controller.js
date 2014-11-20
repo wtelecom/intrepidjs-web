@@ -14,9 +14,16 @@ angular.module('IntrepidJS').controller('DocController',
     [
         '$scope',
         '$state',
-        function ($scope, $state){
+        '$location',
+        '$anchorScroll',
+        function ($scope, $state, $location, $anchorScroll){
+            $anchorScroll.yOffset = 75;
             this.api = doc;
             $scope.api = doc;
+            $scope.goTo = function(id) {
+                $location.hash(id);
+            };
+            $anchorScroll();
         }
     ]
 );
@@ -36,7 +43,7 @@ var doc = [
             {
                 id: "requirements",
                 title: "Requisitos",
-                text: "<p>Para empezar a usar IntrepidJS, necesitas instalar algunas herramientas en tu sistema.</p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
+                text: "<pre>Para empezar a usar IntrepidJS, </pre><p><pre>necesitas instalar algunas herramientas en tu sistema.</pre></p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
                 content: []
             },
             {

@@ -9,6 +9,12 @@
 *:focus {
   outline: 0; }
 
+body {
+  padding-top: 70px;
+}
+.pointer {
+  cursor: pointer;
+}
 .button {
   -webkit-font-smoothing: antialiased;
   display: inline-block;
