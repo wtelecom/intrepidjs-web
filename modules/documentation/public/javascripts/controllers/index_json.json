@@ -1,0 +1,134 @@
+[
+    {
+        "id": "introduction",
+        "title": "Introducción",
+        "text": "",
+        "content": [
+            {
+                "id": "generalView",
+                "title": "Visión general",
+                "text": "<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href='http://opensource.org/licenses/MIT'>MIT</a>.<p>",
+                "content": []
+            },
+            {
+                "id": "requirements",
+                "title": "Requisitos",
+                "text": "<pre>Para empezar a usar IntrepidJS, </pre><p><pre>necesitas instalar algunas herramientas en tu sistema.</pre></p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "tutorial",
+        "title": "Tutorial",
+        "text": "",
+        "content": [
+            {
+                "id": "firstSteps",
+                "title": "Primeros pasos: instalación",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "userCreation",
+                "title": "Creación de usuarios",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstIntrepidJS",
+                "title": "Mi primer servidor IntrepidJS",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstBlog",
+                "title": "Mi primer modulo: un blog",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "widgets",
+                "title": "Widgets",
+                "text": "",
+                "content": [
+                    {
+                        "id": "carousel",
+                        "title": "Carrusel",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "twittertimeline",
+                        "title": "Twitter timeline",
+                        "text": "",
+                        "content": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "devGuide",
+        "title": "Guía de desarrollo",
+        "text": "",
+        "content": [
+            {
+                "id": "dirStructure",
+                "title": "Estructura de directorios",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "backend",
+                "title": "Backend",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "frontend",
+                "title": "Frontend",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "security",
+        "title": "Seguridad",
+        "text": "",
+        "content": [
+            {
+                "id": "roles",
+                "title": "Gestión de roles y perfiles",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "cli",
+        "title": "CLI",
+        "text": "",
+        "content": [
+            {
+                "id": "interpidjs_cli",
+                "title": "Interpidjs-cli",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "make_js",
+                "title": "Make.js",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "roadmap",
+        "title": "Roadmap",
+        "text": "",
+        "content": []
+    }
+]
