@@ -319,7 +319,9 @@ a:focus, button:focus {
   border-radius: 0px;
   border: 0px;
   z-index: 999;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  height: 70px;
+}
   @media (min-width: 768px) {
     .navbar.hero {
       padding-top: 10px;
@@ -777,7 +779,7 @@ header{
     margin-right: 30px; }
   .feature-text {
     -webkit-font-smoothing: antialiased;
-    width: 50%;
+    /*width: 50%;*/
     padding-top: 5px;
     font-family: "Lato", "Helvetica Neue", Arial;
     color: #fff;
@@ -788,7 +790,7 @@ header{
     -webkit-animation-duration: 1s; }
   .feature-sub-text {
     -webkit-font-smoothing: antialiased;
-    width: 50%;
+    /*width: 50%;*/
     font-family: "Lato", "Helvetica Neue", Arial;
     color: #fff;
     font-weight: 400;
