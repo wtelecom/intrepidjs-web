@@ -341,11 +341,12 @@ a:focus, button:focus {
     font-size: 15px;
     padding: 15px 20px;
     font-weight: 500;
-    -webkit-transition: color 0.2s linear;
+    /*-webkit-transition: color 0.2s linear;
     -moz-transition: color 0.2s linear;
     -ms-transition: color 0.2s linear;
     -o-transition: color 0.2s linear;
-    transition: color 0.2s linear; }
+    transition: color 0.2s linear;*/
+  }
     .navbar.hero .navbar-nav > li > a:hover {
       color: #fff; }
   .navbar.hero .navbar-nav > li.open > a {
