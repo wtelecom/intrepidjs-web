@@ -21,47 +21,85 @@
     {
         "id": "tutorial",
         "title": "Tutorial",
-        "text": "",
+        "text": "<p>In the following tutorial, you will see the main features of IntrepidJS and how to create your first module, a blog.</p>",
         "content": [
             {
                 "id": "firstSteps",
                 "title": "First steps: installation",
-                "text": "",
+                "text": "<p>In order to work with <em>IntrepidJS</em>, you need to configure your environment to be able to run the server. <br /><br />The first step is to install some tools with the following command:</p><pre>$ sudo apt-get update <br />$ sudo apt-get install nodejs npm redis-server mongodb</pre><p>If you want more details about these, go to HTML: enlace Requistos 1.2</p><p>Then, you need to get all the required dependencies for <em>IntrepidJS</em> by installing the <em>intrepidjs-cli</em> utility via npm:</p><pre>$ npm update <br />$ sudo npm install -g intrepidjs-cli</pre><p>You now have all you need to start. The following step is to create the folder for your new IntrepidJS project. </p><p>You will use the command <code>intrepidjs-init</code> to do so. This is an utility that clones the repository, gets the latest version of code and does many magic things for us. The <code>intrepidjs-init</code> command automatically creates a new folder for the project. If you don't use a parameter with the command, the default name for the folder will be <em>intrepidjs</em>. With the following code, the name for the folder will be <em>myApp</em></p><pre>$ mkdir intrepidjs <br />$ cd intrepidjs <br />$ intrepidjs-init myApp</pre><br /> <p>When it successfully completes, the message <code>Express server listening on port 8000</code> will be shown.<br />Open your browser and go to <a href='http://localhost:8000/' target='_blank'>http://localhost:8000</a></p>",
                 "content": []
             },
             {
                 "id": "userCreation",
                 "title": "Creation of an user",
-                "text": "",
+                "text": "<p> In this tutorial, you will create your first user, which will be automatically granted with administrator privileges. <br /><br />Move into the folder in which you have created the IntrepidJS project (myApp if you have followed the installation guide of this documentation) and execute the following command</p><pre>$ node app.js</pre><p>Open your favorite browser and go to <a href='http://localhost:8000/' target='_blank'>http://localhost:8000</a>You just need to create your first user by clicking on Sign up on the topright of your screen. Be aware that this first user will automatically be granted with administrator privileges.</p>",
                 "content": []
             },
             {
                 "id": "firstIntrepidJS",
-                "title": "My first server IntrepidJS",
-                "text": "",
+                "title": "My first IntrepidJS server",
+                "text": "<p>In this tutorial, you will see the features of the admin control panel.<br /><br />Move into the folder in which you have created the IntrepidJS project (myApp if you have followed the installation guide of this documentation) and execute the following command</p><pre>$ nodemon app.js</pre><p>Log in the application with the administrator user, and then click on your username on the topright corner. You will see a menu with several options, click on control panel. In the control panel, you can see on the left several tabs:<ul><li><strong>Dashboard</strong>: To see statistics about your modules and about the number of users registered.</li><li><strong>Users</strong>: To see the list of registered users and define their roles<li><strong>Modules</strong>: To activate and desactivate main modules and also your custom modules</li><li><strong>Highlights</strong>: To change your home page. Be aware that in the first frame, you can only put UI elements</li><li><strong>Appearance</strong>: To change the style of your application</li><li><strong>UI element</strong>: To manage the UI widget(activate/desactivate, etc)</li><li><strong>Social networks</strong>: To manage the social widget(activate/desactivate, etc)</li></ul></p><p>It is important at this point to understand the difference between a module and a widget:<ul><li>A <strong>widget</strong> is embedded in the IntrepidJS core, and so you can use it everywhere, and, for instance, in any modules.</li><li>A <strong>module</strong> is designed to do one specific task in one place. A module isn’t as 'general' as a widget.</li></ul></p>",
                 "content": []
             },
             {
                 "id": "firstBlog",
                 "title": "My first module: a blog",
-                "text": "",
-                "content": []
+                "text": "<p>You will now see how easy it is to create your own custom module with IntrepidJS by creating your own blog. This tutorial requires that you previously installed IntrepidJs and all its required dependencies. If it is not the case, please follow this tutorial. HTML: poner enlace Primeros pasos</p>",
+                "content": [
+                    {
+                        "id": "tutoActivate",
+                        "title": "Activate your module",
+                        "text": "<p>Move into the folder myApp and execute the following commands:</p><pre>$ ./make.js createmodule blog</pre><p>This command will create a new module named ‘blog’, You can find all the files for this module in the folder modules/blog.In order to be able to activate/desactivate it, you have to modified the file 'settings.js' in the folder myApp, by adding the name of your modules in the modules to export:</p><b>File: setting.js</b><pre>// Modules to load<br />exports.modules = [<br />    'blog'<br />];</pre><p>Launch the servidor with the command.</p><pre>$ node app.js</pre><p>Now, in the control panel of your application, if you go to the Modules page, you will see the custom Module ‘Blog’. Activate it. Log out and then restart the server. You will now see in the top of your browser that there is a new tab named ‘Blog’. Click on it in order to switch your current page. This new page simply display the name of your module, in this case ‘Blog’ .</p>",
+                        "content": []
+                    },
+                    {
+                        "id": "tutoSchema",
+                        "title": "Create the schemas and models",
+                        "text": "<p>You will continue with the schemas and models of your blog, in order to save the different posts of your Blog. Go to the folder modules/blog/data/schemas and add the file ‘post.js’ with the following lines:</p><b>File : modules/blog/data/schemas/post.js</b><pre>/**<br /> * @file Blog.js<br /> * Blogspace Blog schema<br /> * @desc MongoDB Blog object schema<br /> */<br /><br />var mongoose = require('mongoose'),<br />    rek = require('rekuire'),<br />    _ = require('underscore');<br /><br />var postSchema = new mongoose.Schema({<br />    author: {<br />        type: mongoose.Schema.Types.ObjectId,<br />        ref: 'Account'<br />    },<br />    title: String,<br />    text: String,<br />    created: {type: Date, default: Date.now }<br />});<br /><br />module.exports = postSchema;</pre><p>This will create a schema with four fields:<ul><li>an <strong>author</strong>, which is a reference to the account model </li><li>a <strong>title</strong></li><li>the <strong>content</strong> of the post</li><li>the <strong>date of creation</strong></li></ul></p><p>You now have to create the corresponding model in the folder modules/blog/data/models. Add the following lines to a new file named ‘post.js’:</p><b>File : modules/blog/data/models/post.js</b><pre>/**<br /> * @file Blog.js<br /> * Blogspace Blog model<br /> * @desc MongoDB Blog object model<br /> */<br /><br />var mongoose = require('mongoose'),<br />    rek = require('rekuire'),<br />    moduleSchema = rek('modules/blog/data/schemas/post'),<br />    schema = mongoose.model('Blog', moduleSchema);<br /><br />module.exports = schema;</pre>",
+                        "content": []
+                    },
+                    {
+                        "id": "tutoView",
+                        "title": "Create the view",
+                        "text": "<p>You will now create the view in order to be able to create new posts. Go to the folder modules/blog/views/, and edit the file ‘index.jade’ by adding the following lines to the existing one (which only shows the name of the module):</p><b>File : modules/blog/views/index.jade</b><pre>form.form-inline(ng-submit=\"createPost()\")<br />    input.form-control(type=\"text\", ng-model=\"formData.title\", placeholder=\"title\")<br />    input.form-control(type=\"text\", ng-model=\"formData.text\", placeholder=\"text\")<br />    button(type=\"submit\").btn.btn-default Send</pre><p>This create two fields, one for the title and another for the content, and a button 'Send' to create the post. For the moment it doesn’t do anything because the associated controllers doesn’t do anything.</p>",
+                        "content": []
+                    },
+                    {
+                        "id": "tutoController",
+                        "title": "Create the controller",
+                        "text": "<p>Move into the folder modules/blog/public/javascripts/controllers/’ and edit the file ‘index_controller.js’ by adding the following lines:</p><b>File : modules/blog/public/javascripts/controllers/index_controller.js</b><pre>angular.module('IntrepidJS').controller('BlogIndexController',<br />    [<br />        '$scope',<br />        '$state',<br />        'restService',<br />        function ($scope, $state, restService) {<br />            $scope.formData = {};<br /><br />            restService.get({}, apiPrefix + '/blog/post',<br />                function(data) {<br />                    $scope.posts = data.objects;<br />                });<br /><br />            $scope.createPost = function () {<br />                restService.post($scope.formData, apiPrefix + '/blog/post/create',<br />                    function(data) {<br />                        $scope.posts.push(data.objects);<br />                        $scope.formData = {};<br />                    });<br />            };<br />        }<br />    ]<br />);</pre><p>This code does two things:<ul><li>First, it get all the existing post in order to display them</li><li>Second, it creates and stores a post when you click on the button 'Send'</li></ul></p><p>Stop and restart the server with the following command </p><pre>$ node app</pre><p>Now, if you reload the page of your module, you can see that when you create a 'post' by clicking on the 'send' button, a POST request is sent.</p>",
+                        "content": []
+                    },
+                    {
+                        "id": "tutoPost",
+                        "title": "Display your posts",
+                        "text": "<p>You will now add the code in order to be able to see the existing posts.</p><b>File : modules/blog/views/index.jade</b><pre>hr<br />.row(ng-repeat=\"p in posts\")<br />    .col-xs-6<br />        h4 {{p.title}}<br />        p {{p.text}}<br />    .col-xs-6<br />        pre {{p | json}}<br />alert.alert.alert-warning.col-xs-12(ng-if=\"!posts\") There isn’t any post</pre><p>When there is some posts in the database, this code creates two columns, the left one with the title and the content of the post, and the right one the document as it is stored in the mongoDB database. Otherwise, you will see the message<code>There isn’t any post</code>. You can add post and directly see them in the page of your module</p>",
+                        "content": []
+                    },
+                    {
+                        "id": "tutoHighlight",
+                        "title": "Create the highlights",
+                        "text": "<p>Now, you will show the posts in the highlight of your module. First, modify the file ‘highlights.jade’ in the folder modules/blog/views/partials/highlights.jade</p><b>File : modules/blog/views/partials/</b><pre>div(ng-controller=\"BlogHLC\") <br />    h1 Blog<br />    .row(ng-repeat=\"p in posts\")<br />        .col-xs-12.well<br />            h4 {{p.title}}<br />            p {{p.text}}<br />    alert.alert.alert-warning.col-xs-12(ng-if=\"!posts\") No hay posts</pre><p>This will display the different post with another controller named 'BlogHLC'. So you need to create it. Modify the file 'index_controller.js' in the folder modules/blog/public/javascripts/controllers/ by adding the following lines:</p><b>File : modules/blog/public/javascripts/controllers/index_controller.js</b><pre>/**<br /> * @desc  Blog Index controller<br /> * @param object $scope - The controller scope var<br /> * @param object $state - The controller state route var<br /> */<br /><br />angular.module('IntrepidJS').controller('BlogHLC',<br />    [<br />        '$scope',<br />        '$state',<br />        'restService',<br />        function ($scope, $state, restService) {<br />            $scope.formData = {};<br /><br />            restService.get({<br />                options: {'sort': '-created'}<br />            }, apiPrefix + '/blog/post',<br />                function(data) {<br />                    $scope.posts = data.objects;<br />                });<br />        }<br />    ]<br />);</pre><p>This controller will get all the existing posts and sorts them by their creation date.</p><p>In order to see the posts in your home page, the last thing is to add your module in the highlight. <br />On your browser, click on your username, then on control panel and finally go to the Highlights tab. On the right of the screen, in the category ‘Modules’, you can now see the name of your module. Click, drag and drop it on the second frame and go to your home page (more details about this in the following tutorial ENLACE: siguiente punto widgets)<br />). You can now see your different posts ordered by their date of creation.</p><p><strong>Congratulations!</strong><br />If you want to learn more about the modules, go to ENLACE: modules documentation</p>",
+                        "content": []
+                    }
+
+                ]
             },
             {
                 "id": "widgets",
                 "title": "Widgets",
-                "text": "",
+                "text": "<p>By default, all the applications IntrepidJS are created with two main modules (un chat et un email), one UI widget (a carousel) and one social widget (a timeline for a twitter account). If you want to activate/desactivate predefined modules, move to “modules”. In order to activate/desactivate predefined widgets, go to “UI elements” or “Social networks”.</p>",
                 "content": [
                     {
                         "id": "carrousel",
                         "title": "Carrusel",
-                        "text": "",
+                        "text": "<p>In order to change your home page, activate the “carousel” widget in “UI elements”. First you need click in ‘show actions’, then, Carousel Data section will be displayed. You should add the three photos and then activate the widget by clicking on the button “off” at the right of the name “carousel”, and finally go to “Highlights”.<br />There is now a the “carousel” module in the UI element category. To see it in your home page, click, drag and drop it in the first frame. This frame is an UI frame only. Once done, you can see it in your home page. </p>",
                         "content": []
                     },
                     {
                         "id": "twitterTimeline",
-                        "title": "Twitter Timeline",
-                        "text": "",
+                        "title": "Twitter timeline",
+                        "text": "<p>In the same way, you can activate the twitter timeline by going to the “social elements” category and activate it by clicking on the button “off” at the right of the name “Twitter timeline”. Then, click on Show actions and complete the required fields. As you did for the carousel, go to “highlights” and click, drag and drop the frame “twitter timeline” where you want the twitter timeline to be shown.<br /><br />On your <a href='http://localhost:8000/#/blog' target='_blank'>home page</a>, you know have a carousel of images and a twitter timeline.<br /><br /><br />If you want to learn how to create your own widgets, go to HTML: enlace widget documentacion.</p>",
                         "content": []
                     }                    
                 ]
