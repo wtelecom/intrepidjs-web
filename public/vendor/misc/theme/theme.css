@@ -319,9 +319,7 @@ a:focus, button:focus {
   border-radius: 0px;
   border: 0px;
   z-index: 999;
-  -webkit-font-smoothing: antialiased;
-  height: 70px;
-}
+  -webkit-font-smoothing: antialiased; }
   @media (min-width: 768px) {
     .navbar.hero {
       padding-top: 10px;
@@ -341,12 +339,11 @@ a:focus, button:focus {
     font-size: 15px;
     padding: 15px 20px;
     font-weight: 500;
-    /*-webkit-transition: color 0.2s linear;
+    -webkit-transition: color 0.2s linear;
     -moz-transition: color 0.2s linear;
     -ms-transition: color 0.2s linear;
     -o-transition: color 0.2s linear;
-    transition: color 0.2s linear;*/
-  }
+    transition: color 0.2s linear; }
     .navbar.hero .navbar-nav > li > a:hover {
       color: #fff; }
   .navbar.hero .navbar-nav > li.open > a {
@@ -531,12 +528,13 @@ a:focus, button:focus {
 #footer-white {
   background: #fff;
   background-image: url("bgbluec.jpg");
+  background-size: cover;
 /*  padding-top: 70px;
   padding-bottom: 30px;*/
   -webkit-font-smoothing: antialiased; }
-  @media (max-width: 991px) {
+  /*@media (max-width: 991px) {
     #footer-white {
-      padding-top: 30px; } }
+      padding-top: 30px; } }*/
   @media (max-width: 767px) {
     #footer-white .menu {
       text-align: center;
@@ -686,11 +684,19 @@ header{
   position: fixed !important;
   width: 100%;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
- /* background: rgba(32, 54, 114, 0.1) !important;*/
-}
-.shadowed { 
+  }
+.shadowed {
     -webkit-filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.9));
+    filter: url(shadow.svg#drop-shadow);
+   /* -ms-filter: progid:DXImageTransform.Microsoft.Dropshadow(OffX=5, OffY=10, rgba(0, 0, 0, 0.9));*/
     filter:         drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.9)); 
+}
+.git-icon{
+  position: absolute; 
+  top: 70px; 
+  right: 0; 
+  border: 0;
+  z-index:99;
 }
 /* pages */
 #home #hero {
@@ -704,18 +710,32 @@ header{
   /*background-image: url("../../images/bg3.png");*/
   /*background-image: url("http://25.media.tumblr.com/665f306a0a5a5eae6e0c91f33ce74695/tumblr_mzzqv2P7MY1st5lhmo1_1280.jpg");*/
   /*background: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)), -webkit-linear-gradient(108deg, #5E8199, #153752 90%);*/
-  background-position: center -70px;
+  background-position: left -70px;
   /*background-position: 0px -70px;*/
-  height: 553px; /*620px*/
+  /*height: 553px;*/ /*620px*/
   position: relative;
   padding-top: 30px;
+  padding-bottom: 50px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4); }
   @media (max-width: 991px) {
     #home #hero {
-      padding-top: 100px; } }
-  @media (max-width: 767px) {
+      top: -100px;
+      padding-top: 120px }
+    #home #hero img.mainlogo-icon{
+      display: none;}
+    .sub-text-boxes{
+      width: 90%;}
+    .navbar-icon{
+      margin-left: 30px;}
+    .git-icon{
+      top:50px;}
+  }
+  /*@media (max-width: 767px) {
     #home #hero {
-      height: 550px; } }
+      height: 550px; } }*/
+  @media (max-width: 1300px) {
+    #home #hero {
+      background-size: inherit; } }
   #home #hero:before {
     position: absolute;
     content: '';
@@ -765,6 +785,15 @@ header{
   #home #hero .sub-text-boxes{
     margin-top: 60px;
     margin-left: 50px;
+  }
+  @media (max-width: 450px) {
+    #home #hero .sub-text-boxes{
+      margin-left: 5px;
+      margin-top: 40px;
+      width: 100%;}
+    #home #hero .sub-text-box{
+      margin-bottom: 40px;
+    }
   }
   .sub-text-box{
     width: auto;
@@ -897,12 +926,12 @@ header{
 
 #home #features {
   /* mixin found in partials/snippets */
-  margin-top: 100px;
-  margin-top: 20px; }
+  margin-top: 50px; }
   @media (max-width: 991px) {
     #home #features {
-      margin-top: 50px; } }
+      margin-top: -50px; } }
   #home #features .header {
+/*    margin-top: 50px;*/
     text-align: center; }
     #home #features .header h2 {
       color: #555;
@@ -976,9 +1005,9 @@ header{
     @media (max-width: 991px) {
       #home #features .divider {
         margin: 55px 0 35px; } }
-  @media (max-width: 767px) {
+  /*@media (max-width: 767px) {
     #home #features {
-      margin-top: 0; } }
+      margin-top: 0px; } }*/
 #home #pricing {
   -webkit-font-smoothing: antialiased;
   border-top: 1px solid #EAEAEA;
@@ -3166,8 +3195,7 @@ header{
   width: 650px; }
 #home4 #demo .modal-body {
   padding: 0px; }
-
-#features #tabs {
+ #tabs {
   margin-top: 40px;
   margin-bottom: 130px;
   -webkit-font-smoothing: antialiased; }
@@ -4268,7 +4296,9 @@ header{
           #blog #posts .sidebar .best-hits a {
             display: block;
             margin-bottom: 10px; } }
-
+.fa-lg{
+  color: white;
+}
 #blogpost {
   -webkit-font-smoothing: antialiased; }
   #blogpost #blogpost-wrapper {
