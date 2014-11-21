@@ -185,32 +185,32 @@
                                 "id": "settings",
                                 "title": "Settings",
                                 "text": "",
-                                "content": [],
+                                "content": []
                             },
                             {
                                 "id": "appJs",
                                 "title": "App.js",
                                 "text": "",
-                                "content": [],
+                                "content": []
                             },
                             {
                                 "id": "libs",
                                 "title": "Libs",
                                 "text": "",
-                                "content": [],
+                                "content": []
                             },
                             {
                                 "id": "administration",
                                 "title": "Administration",
                                 "text": "",
-                                "content": [],
+                                "content": []
                             },
                             {
                                 "id": "routes",
                                 "title": "Routes",
                                 "text": "",
-                                "content": [],
-                            },
+                                "content": []
+                            }
                         ]
                     },
                     {
@@ -259,14 +259,14 @@
                                 "id": "partials",
                                 "title": "Partials",
                                 "text": "",
-                                "content": [],
+                                "content": []
                             },
                             {
                                 "id": "highlights",
                                 "title": "Highlights",
                                 "text": "",
-                                "content": [],
-                            },
+                                "content": []
+                            }
                         ]
                     },
                     {
