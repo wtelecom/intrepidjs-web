@@ -19,13 +19,14 @@ angular.module('IntrepidJS').controller('DocController',
         'restService',
         '$anchorScroll',
         'i18n',
-        function ($scope, $state, $timeout, $location, restService, $anchorScroll, i18n){
+        function ($scope, $state, $timeout, $location, restService, $anchorScroll, i18n) {
             $anchorScroll.yOffset = 75;
             var lang = i18n.userLanguage;
+            console.log(lang);
             if (lang != 'es' && lang != 'en') {
                 lang = 'es';
             }
-            restService.get({}, "documentation/public/resources/doc_" + "es" + ".json", function(data) {
+            restService.get({}, "documentation/public/resources/doc_" + lang + ".json", function(data) {
                 $scope.api = data;
                     $scope.goTo = function(id) {
                         $location.hash(id);
