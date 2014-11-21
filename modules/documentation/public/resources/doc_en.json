@@ -180,7 +180,38 @@
                         "id": "backModules",
                         "title": "Modules",
                         "text": "",
-                        "content": []
+                        "content": [
+                            {
+                                "id": "settings",
+                                "title": "Settings",
+                                "text": "",
+                                "content": [],
+                            },
+                            {
+                                "id": "appJs",
+                                "title": "App.js",
+                                "text": "",
+                                "content": [],
+                            },
+                            {
+                                "id": "libs",
+                                "title": "Libs",
+                                "text": "",
+                                "content": [],
+                            },
+                            {
+                                "id": "administration",
+                                "title": "Administration",
+                                "text": "",
+                                "content": [],
+                            },
+                            {
+                                "id": "routes",
+                                "title": "Routes",
+                                "text": "",
+                                "content": [],
+                            },
+                        ]
                     },
                     {
                         "id": "backPublic",
@@ -223,7 +254,20 @@
                         "id": "frontViews",
                         "title": "Views",
                         "text": "",
-                        "content": []
+                        "content": [
+                            {
+                                "id": "partials",
+                                "title": "Partials",
+                                "text": "",
+                                "content": [],
+                            },
+                            {
+                                "id": "highlights",
+                                "title": "Highlights",
+                                "text": "",
+                                "content": [],
+                            },
+                        ]
                     },
                     {
                         "id": "frontDependencies",
