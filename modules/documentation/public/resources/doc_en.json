@@ -7,13 +7,13 @@
             {
                 "id": "generalView",
                 "title": "General vision",
-                "text": "",
+                "text": "<p>IntrepidJS is a web development framework, born to meet its most common needs. It enables one to create easily and quickly web applications.<br />Thanks to this documentation, you will understand how this framework works, and how you can use the different technologies which composes it in order to make this project a reality!<br />This documentation is in continuous development, therefore feel free to help us by adding a <a href='https://github.com/wtelecom/intrepidjs/issues/new' target='_blank'>new issue</a> telling us how to improve it, or contributing in our repository <a href='https://github.com/wtelecom/intrepidjs' target='_blank'>Github</a>.<br />IntrepidJS is released under a licence <a href='http://opensource.org/licenses/MIT' target='_blank'>MIT</a>.</p>",
                 "content": []
             },
             {
                 "id": "requirements",
                 "title": "Requirements",
-                "text": "",
+                "text": "<p>In order to be able to work with IntrepidJS, you need to install some tools.</p><ul><li><h3>Node.js</h3><p>Node.js is a development environment from the server layer, based on the programming language Javascript. It is asynchronous, with data I/O in an event-oriented architecture, and based on the Javascript V8 engine from Google.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get update<br />$ sudo apt-get install nodejs</pre><p>In order to verify the installed version, use the following command:</p><pre>$ node --version</pre></li><li><h3>MongoDB</h3><p>MongoDB is a NoSQL document-oriented database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10<br />$  echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list<br />$ sudo apt-get update<br />$ sudo apt-get install mongodb</pre><p>The following tutorial details how to install MongoDB  on a Debian-based system: <a href='http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu' target='_blank'>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu</a></p></li><li><h3>Redis</h3><p>Redis is database engine in cache, based on the storage of hash tables (key/value) but which can optionally be used as a durable or persistent database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get install redis-server</pre></li><li><h3>NPM</h3><p>NPM is the package manager of Node.js, it may be available after the installation of Node.js.<br />If it you don’t have it, download and install it with the following command:</p><pre>$ sudo apt-get install npm</pre></li><li><h3>Bower</h3><p>Bower is a manager of web packages. In order to install it, execute the following command:</p><pre>$ sudo npm i -g bower</pre></li><li><h3>SocketIO</h3><p>SocketIO is a library which enables us to handle real-time events through TCP connexion in Javascript.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo npm install socketio</pre></li></ul>",
                 "content": []
             }
         ]
@@ -76,7 +76,7 @@
             {
                 "id": "dirStructure",
                 "title": "Directory structure",
-                "text": "",
+                "text": "<p>IntrepidJS follows a rigid structural pattern. Though you can modify it in some aspects, you must respect its structure as much as possible since this one has been designed for the proper functioning of all the parts.</p>",
                 "content": [
                     {
                         "id": "mainStructure",
@@ -86,61 +86,61 @@
                             {
                                 "id": "dirData",
                                 "title": "Data",
-                                "text": "",
+                                "text": "<p> In this folder are kept the information related to the data models of the application.<br />It consists in two internal folders.</p><h5>Models</h5><p> After exporting a model in this folder, an API is automatically generated “on the fly”. In order to export a new model, the syntax is based on the schemas defined in Mongoose, and is like the following example:<pre>var setting = mongoose.model('Setting', settingSchema);<br />module.exports = setting;</pre></p><h5>Schemas</h5><p> This folder contains the different data models which are defined fro the MongoDB database, as in any application that uses <a href='http://mongoosejs.com/docs/guide.html' target='_blank'> mongoose</a>.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirLibs",
                                 "title": "Libs",
-                                "text": "",
+                                "text": "<p> In this folder are kept the content related to utilities needed for the controllers or for any part of the application. They serve as support and help for the modules’ creation in the backend.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirLocals",
                                 "title": "Locals",
-                                "text": "",
+                                "text": "<p> In this folder is kept the files to do the internalisation. By default, IntrepidJS creates 2 files, es y en<br />The current engine for templates is Jade, and therefore, you have to use the following syntax in any Jade file:<pre>label= __(‘Some text’)</pre>There will automatically be the chain 'Some text' in each of the files locales for posterior internalisation.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirMiddlewares",
                                 "title": "Middlewares",
-                                "text": "",
+                                "text": "<p>This folder contains all the middlewares used to do request to the API. These middlewares help to construct on a modular way the queries to the API and to keep the good organization of the code.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirModules",
                                 "title": "Modules",
-                                "text": "",
+                                "text": "<p> Given that IntrepidJS is the core of the whole framework, there is a specific folder in order to keep the modules developed on it, and this is done in the folder modules.<br />Each modules has the same structure than an IntrepidJS application, but there is no need to setup the express server in a module because it is IntrepidJS which takes cares of.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirPublic",
                                 "title": "Public",
-                                "text": "",
+                                "text": "<p> In this folder is kept everything related to the frontend, and it consists of 4 subfolders.</p><h5>files</h5><p> This folder is used to save files like for instance the images of user’s profiles.</p><h5>javascripts</h5><p> In this folder are kept all the JavaScripts files related to the frontend and in particular AngularJS files with a <a href='http://scotch.io/tutorials/javascript/angularjs-best-practices-directory-structure#standard-structure' target ='_blank'>standard structure of AngularJS</a></p><h5>stylessheets</h5><p> This folder contains the files related to the css styles.</p><h5>vendor</h5><p> This folder contains additional frontend files used to render the web pages. Some files are predefined with the versions used in IntrepidJS by default, like for instance the AngularJS one. There is also a file named bower.json with all the possible additional dependencies that can be created.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirRoutes",
                                 "title": "Routes",
-                                "text": "",
+                                "text": "<p> IntrepidJS uses ui-router for the web application’s routes, and so this folder contains all the files that define each of these routes and how they work.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirUtils",
                                 "title": "Utils",
-                                "text": "",
+                                "text": "<p> This folder contains with the general utilities which are provided by default with IntrepidJS.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirViews",
                                 "title": "Views",
-                                "text": "",
+                                "text": "<p> The templates’ engine used by IntrepidJS is Jade. This folder contains all the templates used by IntrepidJS, both for the main pages of the application and the ones for the highlights.</p>",
                                 "content": []
                             },
                             {
                                 "id": "dirWidgets",
                                 "title": "Widgets",
-                                "text": "",
+                                "text": "<p> With intrepidJS, you can define widgets in order to add them in the main page or in any views. by default, these widgets take a social character, and, at this time, the only developed widget is the one of the twitter timeline.</p>",
                                 "content": []
                             }
                         ]
@@ -322,15 +322,15 @@
         "text": "",
         "content": [
             {
-                "id": "interpidjs_cli",
-                "title": "Interpidjs-cli",
-                "text": "",
+                "id": "intrepidjs_cli",
+                "title": "Intrepidjs-cli",
+                "text": "<p>The CLI’s name of IntrepidJS is intrepidjs-cli and is in charge of deploying an IntrepidJS’s instance. <br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ [sudo] npm install -g intrepidjs-cli@latest</pre><p>In order to create a new project, execute the following command:</p><pre>$ intrepidjs-init <myApp></pre><p>You now have an IntrepidJS’s instance with which you can start to work.</p>",
                 "content": []
             },
             {
                 "id": "make_js",
                 "title": "Make.js",
-                "text": "",
+                "text": "<p>Every IntrepidJS’s instance possesses its proper CLI, and so in order to use it you must do as below:</p><pre>$ cd myApp<br />$ ./make.js</pre><p>Nowadays, the IntrepidJS’s CLI possesses two utilities:</p><ul><li><h3>createmodule</h3><p>Thanks to this command, you can create modules</p><br /><pre> $ ./make.js createmodule my_first_module</pre></li><li><h3>loaddata</h3><p>Thanks to this command, you can add default data in the schemas of your modules. It is useful when you want to initiate the database with unmodifiable data.</p><br /><pre> $ ./make.js loaddata my_first_module</pre><p>Before executing this command, you must create a JSON file containing your data in the corresponding module at the following route:<p><pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre><p>When the command is executed, it created a schema with the same name that the generating file and load the data into the MongoDB database.<br />The minimal syntax of the JSON file is the following one:</p><pre>{<br />    'wrap': {<br />       ...<br />     }<br />}<br /></pre></li><li><h3>createwidget</h3><h4>En construction</h4><p>This command will create a widget.</p></li></ul>",
                 "content": []
             }
         ]
