@@ -84,7 +84,7 @@
 
 <h4>locales</h4>
 
-<p> In this folder is kept the files to do the internalisation. By default, IntrepidJS creates 2 files, es y en<br />The current engine for templates is Jade, and therefore, you have to use the following syntax in any Jade file:<pre>label= __(‘Some text’)</pre>There will automatically be the chain 'Some text' in each of the files locales for posterior internalisation.</p>
+<p> In this folder is kept the files to do the internationalization. By default, IntrepidJS creates 2 files, es y en<br />The current engine for templates is Jade, and therefore, you have to use the following syntax in any Jade file:<pre>label= __(‘Some text’)</pre>There will automatically be the chain 'Some text' in each of the files locales for posterior internalisation.</p>
 
 <h4>middlewares</h4>
 
