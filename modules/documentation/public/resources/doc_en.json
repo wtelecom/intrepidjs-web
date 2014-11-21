@@ -1,33 +1,300 @@
 [
     {
         "id": "introduction",
-        "title": "Introducción",
+        "title": "Introduction",
         "text": "",
         "content": [
             {
-                "id": "general",
-                "title": "Visión general",
-                "text": "<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href='http://opensource.org/licenses/MIT'>MIT</a>.<p>",
+                "id": "generalView",
+                "title": "General vision",
+                "text": "",
                 "content": []
             },
             {
                 "id": "requirements",
-                "title": "Requisitos",
-                "text": "<pre>Para empezar a usar IntrepidJS, </pre><p><pre>necesitas instalar algunas herramientas en tu sistema.</pre></p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
-                "content": []
-            },
-            {
-                "id": "other",
-                "title": "Other",
-                "text": "<p>IntrepidJS es un framework de desarrollo web nacido para dar respuestas a las necesidades más comunes encontradas en el desarrollo de aplicaciones web. Nos permite crear aplicaciones web de manera rápida y sencilla. Gracias a esta documentación comprenderás cómo funciona y cómo puedes usar las diferentes tecnologías que lo componen para hacer de tu proyecto una realidad. La documentación está en continuo desarrollo, por lo tanto siéntete libre para hacernos saber cómo mejorarla. IntrepidJS se ha liberado bajo la licencia <a href='http://opensource.org/licenses/MIT'>MIT</a>.<p>",
-                "content": []
-            },
-            {
-                "id": "other1",
-                "title": "Other1",
-                "text": "<p>Para empezar a usar IntrepidJS, necesitas instalar algunas herramientas en tu sistema.</p><ul><li><h3>Node.js</h3><p>Es un entorno de programación en la capa del servidor basado en el lenguaje de programación Javascript, es asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor Javascript V8 de Google. Para instalarlo en un sistema basado en Debian debes ejecutar los siguientes comandos:</p></li></ul>",
+                "title": "Requirements",
+                "text": "",
                 "content": []
             }
         ]
+    },
+    {
+        "id": "tutorial",
+        "title": "Tutorial",
+        "text": "",
+        "content": [
+            {
+                "id": "firstSteps",
+                "title": "First steps: installation",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "userCreation",
+                "title": "Creation of an user",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstIntrepidJS",
+                "title": "My first server IntrepidJS",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "firstBlog",
+                "title": "My first module: a blog",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "widgets",
+                "title": "Widgets",
+                "text": "",
+                "content": [
+                    {
+                        "id": "carrousel",
+                        "title": "Carrusel",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "twitterTimeline",
+                        "title": "Twitter Timeline",
+                        "text": "",
+                        "content": []
+                    }                    
+                ]
+            }
+        ]
+    },
+    {
+        "id": "devGuide",
+        "title": "Developers guide",
+        "text": "",
+        "content": [
+            {
+                "id": "dirStructure",
+                "title": "Directory structure",
+                "text": "",
+                "content": [
+                    {
+                        "id": "mainStructure",
+                        "title": "Main Structure",
+                        "text": "",
+                        "content": [
+                            {
+                                "id": "dirData",
+                                "title": "Data",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirLibs",
+                                "title": "Libs",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirLocals",
+                                "title": "Locals",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirMiddlewares",
+                                "title": "Middlewares",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirModules",
+                                "title": "Modules",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirPublic",
+                                "title": "Public",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirRoutes",
+                                "title": "Routes",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirUtils",
+                                "title": "Utils",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirViews",
+                                "title": "Views",
+                                "text": "",
+                                "content": []
+                            },
+                            {
+                                "id": "dirWidgets",
+                                "title": "Widgets",
+                                "text": "",
+                                "content": []
+                            }
+                        ]
+                    }   
+                ]
+            },
+            {
+                "id": "backend",
+                "title": "Backend",
+                "text": "",
+                "content": [
+                    {
+                        "id": "backData",
+                        "title": "Data",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backLibs",
+                        "title": "Libs",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backLocals",
+                        "title": "Locals",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backMiddlewares",
+                        "title": "Middlewares",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backModules",
+                        "title": "Modules",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backPublic",
+                        "title": "Public",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backRoutes",
+                        "title": "Routes",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backUtils",
+                        "title": "Utils",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backViews",
+                        "title": "Views",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "backWidgets",
+                        "title": "Widgets",
+                        "text": "",
+                        "content": []
+                    }
+                ]
+            },
+            {
+                "id": "frontend",
+                "title": "Frontend",
+                "text": "",
+                "content": [
+                    {
+                        "id": "frontViews",
+                        "title": "Views",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "frontDependencies",
+                        "title": "Dependencies",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "frontControllers",
+                        "title": "Controllers",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "frontRoutes",
+                        "title": "Routes",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "frontDirectives",
+                        "title": "Directives",
+                        "text": "",
+                        "content": []
+                    },
+                    {
+                        "id": "frontServices",
+                        "title": "Services",
+                        "text": "",
+                        "content": []
+                    }
+                    ]
+            }
+        ]
+    },
+    {
+        "id": "security",
+        "title": "Security",
+        "text": "",
+        "content": [
+            {
+                "id": "roles",
+                "title": "Gestion of roles and perfils",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "cli",
+        "title": "CLI",
+        "text": "",
+        "content": [
+            {
+                "id": "interpidjs_cli",
+                "title": "Interpidjs-cli",
+                "text": "",
+                "content": []
+            },
+            {
+                "id": "make_js",
+                "title": "Make.js",
+                "text": "",
+                "content": []
+            }
+        ]
+    },
+    {
+        "id": "roadmap",
+        "title": "Roadmap",
+        "text": "",
+        "content": []
     }
 ]
