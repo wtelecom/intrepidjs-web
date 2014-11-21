@@ -177,6 +177,7 @@ angular.module('IntrepidJS').controller('AdminDistController',
                                 }
                                 if (all_modules || all_social_widgets || all_custom_widgets)
                                     stackElementsInOrder(all_modules.concat(all_social_widgets).concat(all_custom_widgets));
+                                console.log($scope.elements_enabled_left);
                             }
                         },
                         function(data, status, headers, config) {

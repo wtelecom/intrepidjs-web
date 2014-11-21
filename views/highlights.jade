@@ -37,12 +37,17 @@
   #features
     .container
       .row.header
-        .col-md-12
+        .col-md-6.col-xs-12
           h2 What about IntrepidJS?
           p IntrepidJS is a web development framework, born to meet its most common needs.
           p It enables one to create easily and quickly web applications.
           h4 IntrepidJS is released under a licence 
             a(href="http://opensource.org/licenses/MIT") MIT.
+        div.col-md-6.col-xs-12
+          div.row
+              each highlight_left in highlights_left
+                  div.col-xs-12
+                    div(ng-include="'#{highlight_left.route}'")
       //- .divider
       //- .row.feature
       //-   .col-md-12.info
@@ -246,21 +251,21 @@
             img(src='images/logos/stripe.png')
             img(src='images/logos/yahoo.png')
 
-div.col-xs-12
-    div.row
-        each highlight_center in highlights_center
-            div.col-xs-12
-                div(ng-include="'#{highlight_center.route}'")
+//- div.col-xs-12
+//-     div.row
+//-         each highlight_center in highlights_center
+//-             div.col-xs-12
+//-                 div(ng-include="'#{highlight_center.route}'")
 
-div.col-md-8.col-xs-12
-    div.row
-        each highlight_left in highlights_left
-            div.col-xs-12
-                div(ng-include="'#{highlight_left.route}'")
-div.col-md-4.col-xs-12
-    div.row
-        each highlight_right in highlights_right
-            div.col-xs-12
-                div(ng-include="'#{highlight_right.route}'")
+//- div.col-md-8.col-xs-12
+//-     div.row
+//-         each highlight_left in highlights_left
+//-             div.col-xs-12
+//-                 div(ng-include="'#{highlight_left.route}'")
+//- div.col-md-4.col-xs-12
+//-     div.row
+//-         each highlight_right in highlights_right
+//-             div.col-xs-12
+//-                 div(ng-include="'#{highlight_right.route}'")
 
 //- include footer
