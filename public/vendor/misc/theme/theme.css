@@ -786,10 +786,14 @@ header{
     margin-top: 60px;
     margin-left: 50px;
   }
-  @media (max-width: 350px) {
+  @media (max-width: 450px) {
     #home #hero .sub-text-boxes{
-      margin-left: -5px;
+      margin-left: 5px;
+      margin-top: 40px;
       width: 100%;}
+    #home #hero .sub-text-box{
+      margin-bottom: 40px;
+    }
   }
   .sub-text-box{
     width: auto;
@@ -4292,7 +4296,9 @@ header{
           #blog #posts .sidebar .best-hits a {
             display: block;
             margin-bottom: 10px; } }
-
+.fa-lg{
+  color: white;
+}
 #blogpost {
   -webkit-font-smoothing: antialiased; }
   #blogpost #blogpost-wrapper {
