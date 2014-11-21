@@ -6,404 +6,58 @@
 
 <h2>Requisitos</h2>
 
-<p>In order to be able to work with IntrepidJS, you need to install some tools.</p>
-<ul>
-<li>
-<h3>Node.js</h3>
-<p>
-Node.js is a development environment from the server layer, based on the programming language Javascript. It is asynchronous, with data I/O in an event-oriented architecture, and based on the Javascript V8 engine from Google.<br />
-In order to install it on a Debian-based system, execute the following commands:
-</p>
-<pre>
-$ sudo apt-get update
-<br />
-$ sudo apt-get install nodejs
-</pre>
-<p>
-In order to verify the installed version, use the following command:
-</p>
-<pre>
-$ node --version
-</pre>
-</li>
-<li>
-<h3>MongoDB</h3>
-<p>
-MongoDB is a NoSQL document-oriented database.<br />
-In order to install it on a Debian-based system, execute the following commands:
-</p>
-<pre>
-$  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-<br />
-$  echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
-<br />
-$ sudo apt-get update
-<br />
-$ sudo apt-get install mongodb
-</pre>
-<p>
-The following tutorial details how to install MongoDB  on a Debian-based system: <a href=”http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu” target=’_blank>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu</a>
-</p>
-</li>
-<li>
-<h3>Redis</h3>
-<p>
-Redis is database engine in cache, based on the storage of hash tables (key/value) but which can optionally be used as a durable or persistent database.<br />
-In order to install it on a Debian-based system, execute the following commands:
-</p>
-<pre>
-$ sudo apt-get install redis-server
-</pre>
-</li>
-<li>
-<h3>NPM</h3>
-<p>
-NPM is the package manager of Node.js, it may be available after the installation of Node.js.
-<br />
-If it you don’t have it, download and install it with the following command:
-</p>
-<pre>$ sudo apt-get install npm</pre>
-</li>
-<li>
-<h3>Bower</h3>
-<p>
-Bower is a manager of web packages. In order to install it, execute the following command:
-</p>
-<pre>$ sudo npm i -g bower</pre>
-</li>
-<li>
-<h3>SocketIO</h3>
-<p>
-SocketIO is a library which enables us to handle real-time events through TCP connexion in Javascript.<br />
-In order to install it on a Debian-based system, execute the following commands:
-</p>
-<pre>
-$ sudo npm install socketio
-</pre>
-</li>
-</ul>
+<p>In order to be able to work with IntrepidJS, you need to install some tools.</p><ul><li><h3>Node.js</h3><p>Node.js is a development environment from the server layer, based on the programming language Javascript. It is asynchronous, with data I/O in an event-oriented architecture, and based on the Javascript V8 engine from Google.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get update<br />$ sudo apt-get install nodejs</pre><p>In order to verify the installed version, use the following command:</p><pre>$ node --version</pre></li><li><h3>MongoDB</h3><p>MongoDB is a NoSQL document-oriented database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10<br />$  echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list<br />$ sudo apt-get update<br />$ sudo apt-get install mongodb</pre><p>The following tutorial details how to install MongoDB  on a Debian-based system: <a href='http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu' target='_blank'>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu</a></p></li><li><h3>Redis</h3><p>Redis is database engine in cache, based on the storage of hash tables (key/value) but which can optionally be used as a durable or persistent database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get install redis-server</pre></li><li><h3>NPM</h3><p>NPM is the package manager of Node.js, it may be available after the installation of Node.js.<br />If it you don’t have it, download and install it with the following command:</p><pre>$ sudo apt-get install npm</pre></li><li><h3>Bower</h3><p>Bower is a manager of web packages. In order to install it, execute the following command:</p><pre>$ sudo npm i -g bower</pre></li><li><h3>SocketIO</h3><p>SocketIO is a library which enables us to handle real-time events through TCP connexion in Javascript.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo npm install socketio</pre></li></ul>
+
+
+
 <h1>Tutorial</h1>
-SI ALGUIEN HACE CAMBIO EN LA VERSION ESPAÑOL O EN INGLES ME AVISO POR FAVOR(ROBIN) NOT UP TO DATE
-<p>In the following tutorial, you will see the main features of IntrepidJS and how to create your first module, a blog.</p>
-<h2>Primeros pasos : instalación</h2>
-<p>In order to be able to work with <em>IntrepidJS</em>, you need to configure your environment to be able to run the server. The first step is to install some tools with the following command:</p>
 
-          <pre>sudo apt-get update &amp;&amp; sudo apt-get install nodejs npm redis-server mongodb</pre>
-
-<p>If you want more details about these, go to</p> HTML: enlace Requistos 1.2
-
-<p>Then, you need to get all the required dependencies for <em>IntrepidJS</em> by installing the <em>intrepidjs-cli</em> utility via npm:</p>
-
-          <pre>npm update &amp;&amp; sudo npm install -g intrepidjs-cli</pre>
-
-          <p>You now have all you need to start. The following step is to create the folder for your new intrepidjs project. </p>
-
-          <p>You will use the command <code>intrepidjs-init</code> to do so. This is an utility that clones the repository, gets the latest version of code and does many magic things for us. The <code>intrepidjs-init</code> command automatically creates a new folder for the project. If you don't use a parameter with the command, the default name for the folder will be <em>intrepidjs</em>. With the following code, the name for the folder will be <em>myApp</em></p>
-
-          <pre>mkdir intrepidjs &amp;&amp; cd intrepidjs
-intrepidjs-init myApp</pre>
-
-          <p>When it successfully completes, the message <code>Express server listening on port 8000</code> will be shown.
-          Open your browser and go to:</p>
-
-          <p><a href="http://localhost:8000/" target="_blank">http://localhost:8000</a></p>
-
-<h2> Creación de usuarios </h2>
-<p>Move into the folder in which you have created the IntrepidJS project (myApp if you have followed the installation guide of this documentation) and execute the following command</p>
-
-<pre>$ node app.js</pre>
-
-<p>Open your favorite browser and go to<a href="http://localhost:8000/" target="_blank">http://localhost:8000</a>
-You just need to create your first user by clicking on Sign up on the topright of your screen. Be aware that this first user will automatically be granted with administrator privileges.</p>
-
-<h2>Mi primer servidor IntrepidJS</h2>
-<p>In this tutorial, you will see the features of the admin control panel.</p>
-
-<p>Move into the folder in which you have created the IntrepidJS project (myApp if you have followed the installation guide of this documentation) and execute the following command</p>
-
-<pre>$ nodemon app.js</pre>
-
-<p>Log in the application with the administrator user, and then click on your username on the topright corner. You will see a menu with several options, click on “control panel”. In the control panel, you can see on the left several tabs:
-<ul>
-<li>Dashboard: To see your modules and statistics about the number of users registered.</li>
-<li>Users: To see the list of registered users and define their roles
-<li>Modules: To activate and desactivate main modules and also your custom modules</li>
-<li>Highlights: To change your home page. Be aware that in the first frame, you can only put UI elements</li>
-<li>Appearance: To change the style of your application</li>
-<li>UI element: To manage the UI widget(activate/desactivate, etc)</li>
-<li>Social networks: To manage the social widget(activate/desactivate, etc)</li>		
-</ul>
-</p>
-
-<p>It is important at this point to understand the difference between a module and a widget:
-<ul>
-<li>A widget is embedded in the IntrepidJS core, and so you can use it everywhere, and, for instance, in any modules.</li>
-<li>A module is designed to do one specific task in one place. A module isn’t as “global” as a widget.</li>
-</ul>
-</p>
-<h2>Mi primer modulo: un blog</h2>
-<p>You will now see how easy it is to create your own custom module with IntrepidJS. You will see this by creating your own blog. This tutorial requires that you previously installed IntrepidJs and all its required dependencies. If it is not the case, please follow this tutorial. HTML: poner enlace Primeros pasos</p>
-
-<p>Move into the folder “myApp” and execute the following commands:</p>
-
-<pre>$ ./make.js createmodule blog</pre>
-
-<p>This command will create a new module named “blog”, You can find all the files for this module in the folder modules/blog.
-In order to be able to activate/desactivate it, you have to modified the file settings.js in the folder “myApp”, by adding the name of your modules in the modules to export:</p>
-
-<pre>// Modules to load
-exports.modules = [
-	'blog'
-];</pre>
-
-<p>Launch the servidor with the command.</p>
-
-<pre>$ nodemon app.js</pre>
-
-<p>Now, in the control panel of your application, if you go to the Modules page, you will see the custom Modules “Blog”. Activate it. Log out and then restart the server. You will now see in the top of your browser that there is a new tab named “Blog”. Click on it in order to switch your current page. This new page simply display the name of your module, in this case “Blog” .</p>
-
-<p>We will start by creating the schemas and models of your blog, in order to save the different posts of your Blog. Go to the folder “modules/blog/data/schemas” and add the file “post.js” with the following lines:</p>
-
-<pre>/**
- * @file Blog.js
- * Blogspace Blog schema
- * @desc MongoDB Blog object schema
- */
-
-var mongoose = require('mongoose'),
-    rek = require('rekuire'),
-    _ = require('underscore');
-
-
-var postSchema = new mongoose.Schema({
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Account'
-    },
-    title: String,
-    text: String,
-    created: {type: Date, default: Date.now }
-});
-
-module.exports = postSchema;
-});
-
-module.exports = postSchema;</pre>
-
-		<p>This will create a schema with four fields:
-			-an author, which is a reference to the account model 
-			-a title
-			-the content of the post
-			-the date of creation</p>
-
-<p>You know have to create the corresponding model in the folder “modules/blog/data/models”. Add the following lines to a new file named “post.js”:</p>
-
-<pre>/**
- * @file Blog.js
- * Blogspace Blog model
- * @desc MongoDB Blog object model
- */
-
-
-var mongoose = require('mongoose'),
-    rek = require('rekuire'),
-    moduleSchema = rek('modules/blog/data/schemas/post'),
-    schema = mongoose.model('Blog', moduleSchema);
-
-module.exports = schema;</pre>
-
-<p>You will now create the view in order to be able to create new posts. Go to the folder ”modules/blog/views/”, and edit the file “index.jade” by adding the following lines to the existing one (which only shows the name of the module):</p>
-
-<pre>form.form-inline(ng-submit="createPost()")
-	input.form-control(type="text", ng-model="formData.title", placeholder="title")
-	input.form-control(type="text", ng-model="formData.text", placeholder="text")
-	button(type="submit").btn.btn-default Send</pre>
-
-<p>This create two fields, one for the title and another for the content, and a button “Send” to create the post. For the moment it doesn’t do anything because the associated controllers doesn’t do anything. Move into the folder “modules/blog/public/javascripts/controllers/” and edit the file “index_controller.js” by adding the following lines:</p>
-
-<pre>angular.module('IntrepidJS').controller('BlogIndexController',
-	[
-    	'$scope',
-    	'$state',
-    	'restService',
-    	function ($scope, $state, restService) {
-        	$scope.formData = {};
-
-
-        	restService.get({}, apiPrefix + '/blog/post',
-            	function(data) {
-                	$scope.posts = data.objects;
-            	});
-
-
-        	$scope.createPost = function () {
-            	restService.post($scope.formData, apiPrefix + '/blog/post/create',
-                	function(data) {
-                    	$scope.posts.push(data.objects);
-                    	$scope.formData = {};
-                	});
-        	};
-    	}
-	]
-);</pre>
-
-<p>This code does two things:
-<ul>
-<li>First, it get all the existing post in order to display them</li>
-<li>Second, it creates and stores a post when you click on the button “Send”</li>
-</ul>
-</p>
-
-<p>Reload the server with the following command (in the shell in which you run the command “nodemon app.js”). You don’t need to stop the server, this command will reload it.</p>
-
-$ rs
-
-<p>Now, if you reload the page of your module, you can see that when you create a “post” by clicking on the “send” button, a POST request is sent. We will now add the code in order to be able to see the existing posts.
-Open the file modules/blog/views/index.jade and add the following lines to the existing one:</p>
-
-<pre>hr
-.row(ng-repeat="p in posts")
-    .col-xs-6
-        h4 {{p.title}}
-        p {{p.text}}
-    .col-xs-6
-        pre {{p | json}}
-alert.alert.alert-warning.col-xs-12(ng-if="!posts") There isn’t any post</pre>
-
-<p>When there is some posts in the database, this code creates two columns, the left one with the title and the content of the post, and the right one the document as it is stored in the mongoDB database. Otherwise, You will see the message “There isn’t any post”. You can add post and directly see them in the page of your module</p>
-
-<p>Now, we will show post in the highlight of your module. First, modify the file “highlights.jade” in the folder modules/blog/views/partials/</p>
-
-<pre>div(ng-controller="BlogHLC")  
-    h1 Blog
-    .row(ng-repeat="p in posts")
-        .col-xs-12.well
-            h4 {{p.title}}
-            p {{p.text}}
-    alert.alert.alert-warning.col-xs-12(ng-if="!posts") No hay posts</pre>
-
-<p>This will display the different post with another controller named “BlogHLC”. So we need to create it. Modify the file “index_controller.js” in the folder modules/blog/public/javascripts/controllers/ by adding the following lines:</p>
-
-<pre>/**
- * @desc  Blog Index controller
- * @param object $scope - The controller scope var
- * @param object $state - The controller state route var
- */
-angular.module('IntrepidJS').controller('BlogHLC',
-    [
-        '$scope',
-        '$state',
-        'restService',
-        function ($scope, $state, restService) {
-            $scope.formData = {};
-
-
-            restService.get({
-                options: {'sort': '-created'}
-            }, apiPrefix + '/blog/post',
-                function(data) {
-                    $scope.posts = data.objects;
-                });
-        }
-    ]
-);<pre>/
-
-<p>This controller will get all the existing posts and sorts them by their creation date.</p>
-
-<p>In order to see the posts in your home page, the last thing is to add your module in the highlight. 
-On your browser, click on your username, then on control panel and finally go to the “Highlights” tab. On the right of the screen, in the category “Modules”, you can now see the name of your module. Click, drag and drop it on the second frame and go to your home page (more details about this in the following tutorial ENLACE: siguiente punto widgets)
-). You can now see your different posts ordered by their date of creation.</p>
-
-<p>Congratulations!
-If you want to learn more about the modules, go to ENLACE: modules documentation</p>
-
-
-<h2> Widgets </h2>
-<p>By default, all the applications IntrepidJS are created with two main modules (un chat et un email), one UI widget (a carousel) and one social widget (a timeline for a twitter account). If you want to activate/desactivate predefined modules, move to “modules”. In order to activate/desactivate predefined widgets, go to “UI elements” or “Social networks”.</p>
-		
-		<ul>
-		<li>
-<h3>Carrusel </h3>
-<p>In order to change your home page, activate the “carousel” module in “UI elements” by clicking on the button “off” at the right of the name “carousel”, and then go to “Highlights”.
-There is now a the “carousel” module in the UI element category. To see it in your home page, click, drag and drop it in the first frame. This frame is an UI frame only. Once done, you can see it in your home page. if you want to add images to your carousel, go back to “UI elements” and click on the button “show actions” at the right of the name “carousel”, you will have a window in order to add your photos.</p>
-
-</li>
-<li>
-<h3>Twitter timeline<h3>
-<p>In the same way, you can activate the twitter timeline by going to the “social elements” category and activate it by clicking on the button “off” at the right of the name “Twitter timeline”. Then, click on Show actions and complete the required fields. As you did for the carousel, go to “highlights” and click, drag and drop the frame “twitter timeline” where you want the twitter timeline to be shown.
-On your home page, you know have a carousel of images and a twitter timeline.</p>
-</li>
-<p>If you want to learn how to create your own widgets, go to HTML: enlace widget documentacion.</p>
 
 <h1>Guía de desarrollo</h1>
 <h2> Estructura de directorios</h2>
-		(añadir enlaces a cada subapartado para profundizar)
 <p>IntrepidJS follows a rigid structural pattern. Though you can modify it in some aspects, you must respect its structure as much as possible since this one has been designed for the proper functioning of all the parts.</p>
+
 <h3>Estructura principal:</h3>
+
 <h4>data</h4>
-<p> In this folder are kept the information related to the data models of the application.<br />
-It consists in two internal folders.
-</p>
-<h5>Models</h5>
-<p> 
-After exporting un modelo in this folder, an API is automatically generated “on the fly”. In order to export a new model, the syntax is based on the schemas defined in Mongoose, and is like the following example:
-<pre>
-var setting = mongoose.model('Setting', settingSchema);<br />
-module.exports = setting;
-</pre>
-</p>
-<h5>Schemas</h5>
-<p> This folder contains the different data models which are defined fro the MongoDB database, as in any application that uses <a href="http://mongoosejs.com/docs/guide.html"> mongoose</a>.
-</p>
+
+<p> In this folder are kept the information related to the data models of the application.<br />It consists in two internal folders.</p><h5>Models</h5><p> After exporting a model in this folder, an API is automatically generated “on the fly”. In order to export a new model, the syntax is based on the schemas defined in Mongoose, and is like the following example:<pre>var setting = mongoose.model('Setting', settingSchema);<br />module.exports = setting;</pre></p><h5>Schemas</h5><p> This folder contains the different data models which are defined fro the MongoDB database, as in any application that uses <a href='http://mongoosejs.com/docs/guide.html' target='_blank'> mongoose</a>.</p>
+
 <h4>libs</h4>
-<p> In this folder are kept the content related to utilities needed for the controllers or for any part of the application. They serve as support and help for the modules’ creation in the backend.
-</p>
+
+<p> In this folder are kept the content related to utilities needed for the controllers or for any part of the application. They serve as support and help for the modules’ creation in the backend.</p>
+
 <h4>locales</h4>
-<p> In this folder is kept the files to do the internalisation. By default, IntrepidJS creates 2 files, es y en<br />
-The current engine for templates is Jade, and therefore, you have to use the following syntax in any Jade file:
-<pre>
-label= __(‘Some text’)
-</pre>
-There will automatically be the chain “Some text” in each of the files locales for posterior internalisation.
-</p>
+
+<p> In this folder is kept the files to do the internalisation. By default, IntrepidJS creates 2 files, es y en<br />The current engine for templates is Jade, and therefore, you have to use the following syntax in any Jade file:<pre>label= __(‘Some text’)</pre>There will automatically be the chain 'Some text' in each of the files locales for posterior internalisation.</p>
+
 <h4>middlewares</h4>
-<p>This folder contains all the middlewares used to do request to the API. These middlewares help to construct on a modular way the queries to the API and to keep the good organization of the code.
-</p>
+
+<p>This folder contains all the middlewares used to do request to the API. These middlewares help to construct on a modular way the queries to the API and to keep the good organization of the code.</p>
+
 <h4>modules</h4>
-<p> Given that IntrepidJS is the core of the whole framework, there is a specific folder in order to keep the modules developed on it, and this is done in the folder modules.<br />
-Each modules has the same structure than an IntrepidJS application, but there is no need to setup the express server in a module because it is IntrepidJS which takes cares of.
-</p>
+
+<p> Given that IntrepidJS is the core of the whole framework, there is a specific folder in order to keep the modules developed on it, and this is done in the folder modules.<br />Each modules has the same structure than an IntrepidJS application, but there is no need to setup the express server in a module because it is IntrepidJS which takes cares of.</p>
+
 <h4>public</h4>
-<p> 
-En esta carpeta se guarda todo lo referente al front-end y se compone de 4 subcarpetas:
-</p>
-<h5>files</h5>
-<p> Se utiliza para guardar los ficheros que se vayan a utilizar. Por ejemplo, las imágenes por defecto para los perfiles de usuario.
 
-</p>
-<h5>javascripts</h5>
-<p> Guarda todo lo referente a javascript para el front-end y principalmente todos los archivos de AngularJS con una <a href="http://scotch.io/tutorials/javascript/angularjs-best-practices-directory-structure#standard-structure">estructura estándar de AngularJS</a>
+<p> En esta carpeta se guarda todo lo referente al front-end y se compone de 4 subcarpetas:</p><h5>Files</h5><p> Se utiliza para guardar los ficheros que se vayan a utilizar. Por ejemplo, las imágenes por defecto para los perfiles de usuario.</p><h5>Javascripts</h5><p> Guarda todo lo referente a javascript para el front-end y principalmente todos los archivos de AngularJS con una <a href='http://scotch.io/tutorials/javascript/angularjs-best-practices-directory-structure#standard-structure' target='_blank'>estructura estándar de AngularJS</a></p><h5>Stylessheets</h5><p> Esta carpeta contiene los archivos referentes a estilos css.</p><h5>Vendor</h5><p> Esta carpeta contiene los archivos adicionales utilizados en el front-end para el renderizado de la web más. Algunos componentes vienen predefinidos a con las versiones que se utilizan en IntrepidJS por defecto como, por ejemplo, la versión de Angular, pero también dispone de un archivo bower.json con el que se pueden configurar dependencias adicionales.</p>
 
-</p>
-<h5>stylessheets</h5>
-<p> Esta carpeta contiene los archivos referentes a estilos css.
-</p>
-<h5>vendor</h5>
-<p> Esta carpeta contiene los archivos adicionales utilizados en el front-end para el renderizado de la web más. Algunos componentes vienen predefinidos a con las versiones que se utilizan en IntrepidJS por defecto como, por ejemplo, la versión de Angular, pero también dispone de un archivo bower.json con el que se pueden configurar dependencias adicionales.
-
-</p>
 <h4>routes</h4>
-<p> IntrepidJS utiliza ui-router para las rutas de la aplicación web y en esta carpeta se encuentran los archivos que configuran cada una de estas rutas y el funcionamiento de las mismas.
-</p>
+
+<p> IntrepidJS utiliza ui-router para las rutas de la aplicación web y en esta carpeta se encuentran los archivos que configuran cada una de estas rutas y el funcionamiento de las mismas.</p>
+
 <h4>utils</h4>
-<p> Esta carpeta contiene código con las utilidades generales que provee por defecto IntrepidJS.
-</p>
+
+<p> Esta carpeta contiene código con las utilidades generales que provee por defecto IntrepidJS.</p>
+
 <h4>views</h4>
-<p>El motor de templates que utiliza IntrepidJS es Jade y en esta carpeta se guardan todos los templates que se utilizan IntrepidJS, tanto para las páginas generales de la aplicación como para los highlights.
-</p>
+
+<p>El motor de templates que utiliza IntrepidJS es Jade y en esta carpeta se guardan todos los templates que se utilizan IntrepidJS, tanto para las páginas generales de la aplicación como para los highlights.</p>
+
 <h4>widgets</h4>
-<p> En IntrepidJS se pueden definir widget para añadirlos en la pantalla principal o en cualquier vista. Estos widgets tienen por defecto carácter social y por defecto, de momento, sólo está desarrollado el widget para el timeline de Twitter.
-</p>
+
+<p> En IntrepidJS se pueden definir widget para añadirlos en la pantalla principal o en cualquier vista. Estos widgets tienen por defecto carácter social y por defecto, de momento, sólo está desarrollado el widget para el timeline de Twitter.</p>
 
 <h2> Backend</h2>
 <h3>data</h3>
@@ -445,66 +99,12 @@ En esta carpeta se guarda todo lo referente al front-end y se compone de 4 subca
 <h2>Gestión de roles y perfiles</h2>
 <h1>CLI</h1> 
 <h2> Intrepidjs-cli </h2>
-<p>
-The CLI’s name of IntrepidJS is intrepidjs-cli and is in charge of deploying an IntrepidJS’s instance. <br />
-In order to install it on a Debian-based system, execute the following commands:
-</p>
-<pre>
-$ [sudo] npm install -g intrepidjs-cli@latest
-</pre>
-<p>
-In order to create a new project, execute the following command:
-</p>
-<pre>
-$ intrepidjs-init <myApp>
-</pre>
-<p>
-You now have an IntrepidJS’s instance with which you can start to work.
-</p>
+
+<p>The CLI’s name of IntrepidJS is intrepidjs-cli and is in charge of deploying an IntrepidJS’s instance. <br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ [sudo] npm install -g intrepidjs-cli@latest</pre><p>In order to create a new project, execute the following command:</p><pre>$ intrepidjs-init <myApp></pre><p>You now have an IntrepidJS’s instance with which you can start to work.</p>
+
 <h2>Make.js</h2>
 
-<p>Every IntrepidJS’s instance possesses its proper CLI, and so in order to use it you must do as below:
-</p>
-	<pre>
-$ cd myApp
-<br />
-$ ./make.js
-</pre>
-<p>Nowadays, the IntrepidJS’s CLI possesses two utilities:</p>
-<ul>
-<li>
-<h3>createmodule</h3>
-<p>Thanks to this command, you can create modules</p>
-<br />
-<pre> $ ./make.js createmodule my_first_module</pre>
-	</li>
-	<li>
-<h3>loaddata</h3>
-<p>Thanks to this command, you can add default data in the schemas of your modules. It is useful when you want to initiate the database with unmodifiable data.</p>
-<br />
-<pre> $ ./make.js loaddata my_first_module</pre>
-<p>Before executing this command, you must create a JSON file containing your data in the corresponding module at the following route:<p>
-<pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre>
-
-
-
-<p>When the command is executed, it created a schema with the same name that the generating file and load the data into the MongoDB database.
-<br />
-The minimal syntax of the JSON file is the following one:</p>
-<pre>
-{
-    "wrap": {
-	...
-	     }
-}
-</pre>
-	</li>
-	<li>
-<h3>createwidget</h3>
-<h4>En construcción</h4>
-<p>Creará widgets funcionales.</p>
-</li>
-</ul>
+<p>Every IntrepidJS’s instance possesses its proper CLI, and so in order to use it you must do as below:</p><pre>$ cd myApp<br />$ ./make.js</pre><p>Nowadays, the IntrepidJS’s CLI possesses two utilities:</p><ul><li><h3>createmodule</h3><p>Thanks to this command, you can create modules</p><br /><pre> $ ./make.js createmodule my_first_module</pre></li><li><h3>loaddata</h3><p>Thanks to this command, you can add default data in the schemas of your modules. It is useful when you want to initiate the database with unmodifiable data.</p><br /><pre> $ ./make.js loaddata my_first_module</pre><p>Before executing this command, you must create a JSON file containing your data in the corresponding module at the following route:<p><pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre><p>When the command is executed, it created a schema with the same name that the generating file and load the data into the MongoDB database.<br />The minimal syntax of the JSON file is the following one:</p><pre>{<br />    'wrap': {<br />       ...<br />     }<br />}<br /></pre></li><li><h3>createwidget</h3><h4>En construction</h4><p>This command will create a widget.</p></li></ul>
 
 <h1>Roadmap</h1>
 
@@ -517,53 +117,5 @@ The minimal syntax of the JSON file is the following one:</p>
 
 
 
-                    {
-                        "id": "frontViews",
-                        "title": "Views",
-                        "text": "",
-                        "content": [
-                            {
-                                "id": "partials",
-                                "title": "Partials",
-                                "text": "",
-                                "content": [],
-                            },
-                            {
-                                "id": "highlights",
-                                "title": "Highlights",
-                                "text": "",
-                                "content": [],
-                            }
-                        ]
-                    },
-                    {
-                        "id": "frontDependencies",
-                        "title": "Dependencies",
-                        "text": "",
-                        "content": []
-                    },
-                    {
-                        "id": "frontControllers",
-                        "title": "Controllers",
-                        "text": "",
-                        "content": []
-                    },
-                    {
-                        "id": "frontRoutes",
-                        "title": "Routes",
-                        "text": "",
-                        "content": []
-                    },
-                    {
-                        "id": "frontDirectives",
-                        "title": "Directives",
-                        "text": "",
-                        "content": []
-                    },
-                    {
-                        "id": "frontServices",
-                        "title": "Services",
-                        "text": "",
-                        "content": []
-                    }
+
                 
