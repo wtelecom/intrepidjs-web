@@ -7,13 +7,13 @@
             {
                 "id": "generalView",
                 "title": "General vision",
-                "text": "<p>IntrepidJS is a web development framework, born to meet its most common needs. It enables one to create easily and quickly web applications.<br />Thanks to this documentation, you will understand how this framework works, and how you can use the different technologies which composes it in order to make this project a reality!<br />This documentation is in continuous development, therefore feel free to help us by adding a <a href='https://github.com/wtelecom/intrepidjs/issues/new' target='_blank'>new issue</a> telling us how to improve it, or contributing in our repository <a href='https://github.com/wtelecom/intrepidjs' target='_blank'>Github</a>.<br />IntrepidJS is released under a licence <a href='http://opensource.org/licenses/MIT' target='_blank'>MIT</a>.</p>",
+                "text": "<p>IntrepidJS is a web development framework, born to meet its most common needs. It enables one to create easily and quickly web applications.<br />Thanks to this documentation, you will understand how this framework works, and how you can use the different technologies which composes it in order to make this project a reality!<br />This documentation is in continuous development, therefore feel free to help us by adding a <a href='https://github.com/wtelecom/intrepidjs/issues/new' target='_blank'>new issue</a> telling us how to improve it, or contributing in our repository <a href='https://github.com/wtelecom/intrepidjs' target='_blank'>Github</a>.<br />IntrepidJS is released under a <a href='http://opensource.org/licenses/MIT' target='_blank'>MIT</a> licence.</p>",
                 "content": []
             },
             {
                 "id": "requirements",
                 "title": "Requirements",
-                "text": "<p>In order to be able to work with IntrepidJS, you need to install some tools.</p><ul><li><h3>Node.js</h3><p>Node.js is a development environment from the server layer, based on the programming language Javascript. It is asynchronous, with data I/O in an event-oriented architecture, and based on the Javascript V8 engine from Google.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get update<br />$ sudo apt-get install nodejs</pre><p>In order to verify the installed version, use the following command:</p><pre>$ node --version</pre></li><li><h3>MongoDB</h3><p>MongoDB is a NoSQL document-oriented database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10<br />$  echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list<br />$ sudo apt-get update<br />$ sudo apt-get install mongodb</pre><p>The following tutorial details how to install MongoDB  on a Debian-based system: <a href='http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu' target='_blank'>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu</a></p></li><li><h3>Redis</h3><p>Redis is database engine in cache, based on the storage of hash tables (key/value) but which can optionally be used as a durable or persistent database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get install redis-server</pre></li><li><h3>NPM</h3><p>NPM is the package manager of Node.js, it may be available after the installation of Node.js.<br />If it you don’t have it, download and install it with the following command:</p><pre>$ sudo apt-get install npm</pre></li><li><h3>Bower</h3><p>Bower is a manager of web packages. In order to install it, execute the following command:</p><pre>$ sudo npm i -g bower</pre></li><li><h3>SocketIO</h3><p>SocketIO is a library which enables us to handle real-time events through TCP connexion in Javascript.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo npm install socketio</pre></li></ul>",
+                "text": "<p>In order to be able to work with IntrepidJS, you need to install some tools.</p><ul><li><h3>Node.js</h3><p>Node.js is a development environment from the server layer, based on the Javascript programming language. It is asynchronous, with data I/O in an event-oriented architecture, and based on the Javascript V8 engine from Google.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get update<br />$ sudo apt-get install nodejs</pre><p>In order to verify the installed version, use the following command:</p><pre>$ node --version</pre></li><li><h3>MongoDB</h3><p>MongoDB is a NoSQL document-oriented database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10<br />$  echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list<br />$ sudo apt-get update<br />$ sudo apt-get install mongodb</pre><p>The following tutorial details how to install MongoDB  on a Debian-based system: <a href='http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu' target='_blank'>http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu</a></p></li><li><h3>Redis</h3><p>Redis is database engine in cache, based on the storage of hash tables (key/value) but which can optionally be used as a durable or persistent database.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo apt-get install redis-server</pre></li><li><h3>NPM</h3><p>NPM is the package manager of Node.js, it may be available after the installation of Node.js.<br />If you don’t have it, download and install it with the following command:</p><pre>$ sudo apt-get install npm</pre></li><li><h3>Bower</h3><p>Bower is a manager of web packages. In order to install it, execute the following command:</p><pre>$ sudo npm i -g bower</pre></li><li><h3>SocketIO</h3><p>SocketIO is a library which enables us to handle real-time events through TCP connexion in Javascript.<br />In order to install it on a Debian-based system, execute the following commands:</p><pre>$ sudo npm install socketio</pre></li></ul>",
                 "content": []
             }
         ]
@@ -26,7 +26,7 @@
             {
                 "id": "firstSteps",
                 "title": "First steps: installation",
-                "text": "<p>In order to work with <em>IntrepidJS</em>, you need to configure your environment to be able to run the server. <br /><br />The first step is to install some tools with the following command:</p><pre>$ sudo apt-get update <br />$ sudo apt-get install nodejs npm redis-server mongodb</pre><p>If you want more details about these, go to HTML: enlace Requistos 1.2</p><p>Then, you need to get all the required dependencies for <em>IntrepidJS</em> by installing the <em>intrepidjs-cli</em> utility via npm:</p><pre>$ npm update <br />$ sudo npm install -g intrepidjs-cli</pre><p>You now have all you need to start. The following step is to create the folder for your new IntrepidJS project. </p><p>You will use the command <code>intrepidjs-init</code> to do so. This is an utility that clones the repository, gets the latest version of code and does many magic things for us. The <code>intrepidjs-init</code> command automatically creates a new folder for the project. If you don't use a parameter with the command, the default name for the folder will be <em>intrepidjs</em>. With the following code, the name for the folder will be <em>myApp</em></p><pre>$ mkdir intrepidjs <br />$ cd intrepidjs <br />$ intrepidjs-init myApp</pre><br /> <p>When it successfully completes, the message <code>Express server listening on port 8000</code> will be shown.<br />Open your browser and go to <a href='http://localhost:8000/' target='_blank'>http://localhost:8000</a></p>",
+                "text": "<p>In order to work with <em>IntrepidJS</em>, you need to configure your environment to be able to run the server. <br /><br />The first step is to install some tools with the following commands:</p><pre>$ sudo apt-get update <br />$ sudo apt-get install nodejs npm redis-server mongodb</pre><p>If you want more details about these, go to <a href=\"#/documentation#requirements\">requirements</a>.</p><p>Then, you need to get all the required dependencies for <em>IntrepidJS</em> by installing the <em>intrepidjs-cli</em> utility via npm:</p><pre>$ npm update <br />$ sudo npm install -g intrepidjs-cli</pre><p>You now have all you need to start. The following step is to create the folder for your new IntrepidJS project. </p><p>You will use the command <code>intrepidjs-init</code> to do so. This is an utility that clones the repository, gets the latest version of code and does a lot of magic things for us. The <code>intrepidjs-init</code> command automatically creates a new folder for the project. If you don't use a parameter with the command, the default name for the folder will be <em>intrepidjs</em>. With the following code, the name for the folder will be <em>myApp</em></p><pre>$ mkdir intrepidjs <br />$ cd intrepidjs <br />$ intrepidjs-init myApp</pre><br /> <p>When it successfully completes, the message <code>Express server listening on port 8000</code> will be shown.<br />Open your browser and go to <a href='http://localhost:8000/' target='_blank'>http://localhost:8000</a></p>",
                 "content": []
             },
             {
@@ -44,7 +44,7 @@
             {
                 "id": "firstBlog",
                 "title": "My first module: a blog",
-                "text": "<p>You will now see how easy it is to create your own custom module with IntrepidJS by creating your own blog. This tutorial requires that you previously installed IntrepidJs and all its required dependencies. If it is not the case, please follow this tutorial. HTML: poner enlace Primeros pasos</p>",
+                "text": "<p>You will now see how easy it is to create your own custom module with IntrepidJS by creating your own blog. This tutorial requires that you previously installed IntrepidJs and all its required dependencies. If it is not the case, please follow this tutorial: <a href=\"#/documentation#firstSteps\">First steps</a></p>",
                 "content": [
                     {
                         "id": "tutoActivate",
@@ -79,7 +79,7 @@
                     {
                         "id": "tutoHighlight",
                         "title": "Create the highlights",
-                        "text": "<p>Now, you will show the posts in the highlight of your module. First, modify the file ‘highlights.jade’ in the folder modules/blog/views/partials/highlights.jade</p><b>File : modules/blog/views/partials/</b><pre>div(ng-controller=\"BlogHLC\") <br />    h1 Blog<br />    .row(ng-repeat=\"p in posts\")<br />        .col-xs-12.well<br />            h4 {{p.title}}<br />            p {{p.text}}<br />    alert.alert.alert-warning.col-xs-12(ng-if=\"!posts\") No hay posts</pre><p>This will display the different post with another controller named 'BlogHLC'. So you need to create it. Modify the file 'index_controller.js' in the folder modules/blog/public/javascripts/controllers/ by adding the following lines:</p><b>File : modules/blog/public/javascripts/controllers/index_controller.js</b><pre>/**<br /> * @desc  Blog Index controller<br /> * @param object $scope - The controller scope var<br /> * @param object $state - The controller state route var<br /> */<br /><br />angular.module('IntrepidJS').controller('BlogHLC',<br />    [<br />        '$scope',<br />        '$state',<br />        'restService',<br />        function ($scope, $state, restService) {<br />            $scope.formData = {};<br /><br />            restService.get({<br />                options: {'sort': '-created'}<br />            }, apiPrefix + '/blog/post',<br />                function(data) {<br />                    $scope.posts = data.objects;<br />                });<br />        }<br />    ]<br />);</pre><p>This controller will get all the existing posts and sorts them by their creation date.</p><p>In order to see the posts in your home page, the last thing is to add your module in the highlight. <br />On your browser, click on your username, then on control panel and finally go to the Highlights tab. On the right of the screen, in the category ‘Modules’, you can now see the name of your module. Click, drag and drop it on the second frame and go to your home page (more details about this in the following tutorial ENLACE: siguiente punto widgets)<br />). You can now see your different posts ordered by their date of creation.</p><p><strong>Congratulations!</strong><br />If you want to learn more about the modules, go to ENLACE: modules documentation</p>",
+                        "text": "<p>Now, you will show the posts in the highlight of your module. First, modify the file ‘highlights.jade’ in the folder modules/blog/views/partials/highlights.jade</p><b>File : modules/blog/views/partials/</b><pre>div(ng-controller=\"BlogHLC\") <br />    h1 Blog<br />    .row(ng-repeat=\"p in posts\")<br />        .col-xs-12.well<br />            h4 {{p.title}}<br />            p {{p.text}}<br />    alert.alert.alert-warning.col-xs-12(ng-if=\"!posts\") No hay posts</pre><p>This will display the different post with another controller named 'BlogHLC'. So you need to create it. Modify the file 'index_controller.js' in the folder modules/blog/public/javascripts/controllers/ by adding the following lines:</p><b>File : modules/blog/public/javascripts/controllers/index_controller.js</b><pre>/**<br /> * @desc  Blog Index controller<br /> * @param object $scope - The controller scope var<br /> * @param object $state - The controller state route var<br /> */<br /><br />angular.module('IntrepidJS').controller('BlogHLC',<br />    [<br />        '$scope',<br />        '$state',<br />        'restService',<br />        function ($scope, $state, restService) {<br />            $scope.formData = {};<br /><br />            restService.get({<br />                options: {'sort': '-created'}<br />            }, apiPrefix + '/blog/post',<br />                function(data) {<br />                    $scope.posts = data.objects;<br />                });<br />        }<br />    ]<br />);</pre><p>This controller will get all the existing posts and sorts them by their creation date.</p><p>In order to see the posts in your home page, the last thing is to add your module in the highlight. <br />On your browser, click on your username, then on control panel and finally go to the Highlights tab. On the right of the screen, in the category ‘Modules’, you can now see the name of your module. Click, drag and drop it on the second frame and go to your home page (more details about this in the following <a href=\"#/documentation#widgets\">widgets</a> tutorial.)<br />). You can now see your different posts ordered by their date of creation.</p><p><strong>Congratulations!</strong><br />If you want to learn more about the modules, go to <a href=\"#/documentation#backModules\">modules documentation</a</p>",
                         "content": []
                     }
 
@@ -88,7 +88,7 @@
             {
                 "id": "widgets",
                 "title": "Widgets",
-                "text": "<p>By default, all the applications IntrepidJS are created with two main modules (un chat et un email), one UI widget (a carousel) and one social widget (a timeline for a twitter account). If you want to activate/desactivate predefined modules, move to “modules”. In order to activate/desactivate predefined widgets, go to “UI elements” or “Social networks”.</p>",
+                "text": "<p>By default, all the applications IntrepidJS are created with two main modules (a chat and an email), one UI widget (a carousel) and one social widget (a timeline for a twitter account). If you want to activate/desactivate predefined modules, move to “modules”. In order to activate/desactivate predefined widgets, go to “UI elements” or “Social networks”.</p>",
                 "content": [
                     {
                         "id": "carrousel",
@@ -99,7 +99,7 @@
                     {
                         "id": "twitterTimeline",
                         "title": "Twitter timeline",
-                        "text": "<p>In the same way, you can activate the twitter timeline by going to the “social elements” category and activate it by clicking on the button “off” at the right of the name “Twitter timeline”. Then, click on Show actions and complete the required fields. As you did for the carousel, go to “highlights” and click, drag and drop the frame “twitter timeline” where you want the twitter timeline to be shown.<br /><br />On your <a href='http://localhost:8000/#/blog' target='_blank'>home page</a>, you know have a carousel of images and a twitter timeline.<br /><br /><br />If you want to learn how to create your own widgets, go to HTML: enlace widget documentacion.</p>",
+                        "text": "<p>In the same way, you can activate the twitter timeline by going to the “social elements” category and activate it by clicking on the button “off” at the right of the name “Twitter timeline”. Then, click on Show actions and complete the required fields. As you did for the carousel, go to “highlights” and click, drag and drop the frame “twitter timeline” where you want the twitter timeline to be shown.<br/><br/>On your <a href='http://localhost:8000/#/blog' target='_blank'>home page</a>, you know have a carousel of images and a twitter timeline.<br /><br /><br />If you want to learn how to create your own widgets, go to <a href=\"#/documentation#widgets\">widgets documentation</a>.</p>",
                         "content": []
                     }                    
                 ]
@@ -193,60 +193,60 @@
                     {
                         "id": "backData",
                         "title": "Data",
-                        "text": "",
+                        "text": "<p>All necessary information for definitions and management of the application's information through using defined models in MongoDB can be found in this folder.</p><p>There are two subfolders inside of this current folder:<p> <ul> <li><b>models:</b> connect the defined model in schemas for the crud API on the fly.  </li> <li><b>schemas:</b> defines MongoDB models and the available operations in the same way as any other applications which use mongoose does.</li> </ul> <p> Both subdirectories have the same directories that correspond to MongoDB models that are defined:</p> <ul> <li><b>admin/settings</b>: defines general models as<i>main_modules, modules, themes</i>.  </li> <li><b>blog</b>: defines default blog models to be used in any module</li> <li><b>chat</b>: defines necessary models for the internal chat of intrepidJS as for example the message model</li> <li> <b>mail</b>: defines the module models of the internal email mangement</li> <li> <b>user</b>: defines models of users and user accounts of IntrepidJS</li> <li><b>widget</b>: defines models for the widgets management in the system as it saves configuration of each one of them into database.</li> </ul>",
                         "content": []
                     },
                     {
                         "id": "backLibs",
                         "title": "Libs",
-                        "text": "",
+                        "text": "<p>A library is a software used to make specific operations in our backend, they can be used in any place and must be abstracts<br/>Usually they are used as modules support in the backend.<br/>The intrepidJS core has some essential libraries for working, which are:<ul> <li> <h4>libs/load_modules</h4> <p> This library is invoked from the file<b>app.js</b>, its main function is to register the available modules in the system and inform about its current status, if the module is active, the necessesary files are loaded in order to be used.<br /> It's one of the most important libraries of the intrepidJS core since it is not only responsible to load modules, but also it generates the routes which are needed by the module for its work.<br /> This library has a direct dependency with the “app.js” file of each module which we wish to load in our instance of intrepidJS.</p> </li> <li> <h4>libs/load_resources</h4> <p>This library is invoked from the <b>app.js</b> file, its main function is to make visible all public files of the available modules in the system.</p> </li> <li> <h4>libs/load_site_params</h4> <p> This library is invoked from the <b>app.js</b> file, its function is to expose public data of our intrepidJS instance, as for example, the instance's title.</p> </li> <li> <h4>libs/load_site_widgets</h4> <p> This library is invoked from the <b>app.js</b> file, its main function is to register the available widgets in the system about its actual status. If the widget is active, the necessary files are loaded in order to be used.<br/> It is not only one of the most important intrepidJS core since it is not only responsible to load widgets, but also it generates the routes which are needed by the widget for its work. <br/> This library has a direct dependency with the “app.js” file of each widget which we wish to load in our intrepidJS instance.</p> </li> <li> <h4>Directorio libs/crud_api_operations</h4> <p>This directory contains the libraries that provide CRUD functionallity to APIs which are created on the fly. <br /> It's one of the most important elements of the IntrepidJS core since the proper functioning of the front-end in our instance depends of this directory. This is responsible for creating all existing routes for the API use.<br /> This library has a direct dependency with the “routes/dynamic_apis_routes.js” file. This file is responsible for importing the directory libraries and to assign them functionality to each one of present schemas in modules. </p> </li> </ul> <p> It's important to note that the libraries which are going to be used in our modules must stay in the <b>libs</b> directory whithin the module directory structure. </p> ",
                         "content": []
                     },
                     {
                         "id": "backLocals",
                         "title": "Locals",
-                        "text": "",
+                        "text": "<p>UNDER CONSTRUCTION</p>",
                         "content": []
                     },
                     {
                         "id": "backMiddlewares",
                         "title": "Middlewares",
-                        "text": "",
+                        "text": "<p>A middleware is a software that is executed intercepting a request.</p> <p> In our case, middlewares are used to do operations or to add information to our response of each request that is done in ExpressJS (usually from the front-end with AngularJS)</p> <p> An example of how a middleware works in IntrepidJS could be the next: We want to know if an user exits through making a request with the user identifier by calling to the API</p> <p> In the server we must receive the request getting the user information and, if exists, reply to the request noting that the user is in the system.</p> <p> On the one hand we have a route that is used to ask to the server if an user exists and it's done as following: </p><b>file: routes/api/users.js</b> <pre> ...  <br> var existUser = rek('middlewares/users/load_user'); <br> ...  <br> routes[settings.apiPrefix + '/users/exist/:name'] = { <br> methods: ['get'], <br> middleware: [existUser], <br> fn: function(req, res, next) { <br> if (!req.user) { <br> res.send({available: true}); <br> } else { <br> res.send({available: false}); <br> } <br> } <br> }; </pre> <p> As we can see, a request is received by telling that the access is only allowed by using the GET method, that a called middleware is going to be used <i>existUser</i> and that after proccessing the information, this is sent to the front-end only if the “req.user” variable has got the user information.</p> <p> The middleware side make a reference to the function that is imported to the middleware <i>load_user</i>, this function is responsible for adding within the variable <i>load_user</i> the <i>req.user</i> property as shown below:</p> <b>archivo: middleware/users/load_user.js</b> <pre> var rek = require('rekuire'), <br> userModel = rek('data/models/user/account'); <br> function loadUser(req, res, next) { <br> if (req.params.id) { <br> userModel.findOne({_id: req.params.id}, function(err, user) { <br> if (err) { <br> return next(err); <br> } <br> if (! user) { <br> return res.send('Not found', 404); <br> } <br> req.user = user; <br> next(); <br> }); <br> } <br> } <br> module.exports = loadUser; <br> </pre><p> Middlewares can be nested one after another, their order in the middleware list is the execution order of each one of them.</p><p> All middlewares, whether if they belong to the intrepidJS core or to any other module, are placed in the “middlewares” folder by convention.</p><p> If the middlewares are specific for a functionality are included within a folder with the same name.</p><p> In the last example, <b>load_user</b> is a specific user's middleware, then it must be added to the <i>user</i> folder within “middlewares”.</p>",
                         "content": []
                     },
                     {
                         "id": "backModules",
                         "title": "Modules",
-                        "text": "",
+                        "text": "<p>A module is a functionality that you add to your intrepidJS instance. We can create modules by using make.js:</p><pre> ./make.js createmodule my_first_module<br>Cloning into /home/soto/tmp/intrepidjs/modules/my_first_module...               ] 10%<br>[##########################################################################] 100%<br>my_first_module module created!</pre><p> You can consult the <a href=\"#/documentation#make_js\">“module creation”</a> section.</p><p>Mainly a module has a <a href=\"#/documentation#dirStructure\">directory structure</a> similar to an intrepid application. The most substancial differences are found in the settings.js and app.js files.</p>",
                         "content": [
                             {
                                 "id": "settings",
                                 "title": "Settings",
-                                "text": "",
+                                "text": "<p>We will include the module configuration in this file. It's a json format file which will be imported from the application using <b>exports</b> of Node.js. </p><p>The most important fields are:</p><ul><li><b>name</b> and <b>description</b>: They are the name and description of the module. The name doesn't have to match the directory where the code is included. The description must appear in the administration view, in the module activation.</li>    <li><b>modulePath</b>: contains the absolute path of the module</li>   <li><b>modelsPath, schemasPath, viewsPath, publicPath, routesPath</b>: contains the absolute routes of each one of the elements which they represent. </li>   <li><b>highlights</b>: boolean variable that will indicate if it's possible to add the highlights to be built in this module. This will be shown inside of the administration menu, <a href=\"#/documentation#firstIntrepidJS\">highlights</a> section</li><li><b>actions</b>: Here it's defined the ui-routes in the module folder <pre>public/javascript/routes/</pre> to load a partial within the defined controller. </li><li><b>onTheFlyMiddlewares</b>: in this section we can define a middleware in a schema which will be executed in the end of the execution sequence. <br>For example, assuming that we have a photos schema, we would add middlewares to the “getAll” and “create” calls with the next lines:<pre>exports.onTheFlyMiddlewares = {<br>   photos: {<br>get: null,<br>getAll: exports.middlewaresPath + 'filter_my_photos',<br>create: exports.middlewaresPath + 'save_imageb64',<br>update: null,<br>delete: null,<br>}<br>};</pre> In order to make this work properly we must have two <pre>middlewaresPath</pre> files called <pre>filter_my_photos</pre></li></ul>",
                                 "content": []
                             },
                             {
                                 "id": "appJs",
                                 "title": "App.js",
-                                "text": "",
+                                "text": "The main methods of the module are defined in this file. The most important are:<ul><li><h5>setModuleApp</h5><p> This function is responsible for initializing the application module. As default, its behaviour is to establish the path of the own module, the public path and its module name</p></li><li><h5>setModuleSections</h5><p>IntrepidJS allows to create sections within the modules. This operation is done when new modules get loaded in our application.</p><li><h5>setModuleRoutes</h5><p></p><p> Each section will be configured in settings.js as an object such that:<pre>section = {<br>name: 'images management',<br>route: '/myPhotos'<br>}<br></pre></p></li><li><h5>removeReferences</h5><p>Intrepid JS allows us to activate and deactivate our modules in order to be used by the user. This function will be called when an user deactivates a module from the administration panel.</p></li></ul>",
                                 "content": []
                             },
                             {
                                 "id": "libs",
                                 "title": "Libs",
-                                "text": "",
+                                "text": "UNDER CONSTRUCTION",
                                 "content": []
                             },
                             {
                                 "id": "administration",
                                 "title": "Administration",
-                                "text": "",
+                                "text": "<p> The main files and directories for the IntrepidJS modules administration are: </p><ul><li>..[module_name]<b>/public/js/controllers/admin_controller.js</b>: Here the actions model which are done from the view will be defined, for more information go to controllers sections</li><li>..[module_name]<b>/public/routes/admin.js</b>: in this file are defined the routes of Angular to which is going to be assigned a state, a controller and the div to which it's going to add the view when the state is referenced by attribute ui-sref.<pre>$stateProvider.<br>state('[STATE NAME]', {<br>url: '[URL/A/REQUEST]',<br>views: {<br>'[DIV_WHERE_TO_INCLUDE_THE_VIEW]':<br>{<br>templateUrl: '/PATH/TO/TEMPLATE',<br>controller: '[NombreAngularController]'<br>}<br>}</pre></li><li>..[module_name]<b>/routes/admin.js</b>: Here it's defined the routes of express, furthermore, a default route which can be used to follow its structure as reference is generated at the moment to create a module.<pre>routes['/' + m_settings.route_prefix + '/admin/parent'] =  {<br>methods: ['get'],<br>middleware: [],<br>fn: function(req, res, next) {<br>res.render(m_settings.viewsPath + 'admin/parent');<br>}<br>};</pre></li><li>..[module_name]<b>/views/admin/</b> : This is the directory where the .jade views referred to the administration modules are stored.</li></ul>",
                                 "content": []
                             },
                             {
                                 "id": "routes",
                                 "title": "Routes",
-                                "text": "",
+                                "text": "<p>IntrepidJS uses Angular as engine to make the views (frontend). In order to make easier this task IntrepidJS creates APIS in a transparent way for the developer.</p><p>This functionality is provided by the module placed in 'lib/crud_operations'. This module creates an API for the CRUD operations (create, read, update and delete) of each database schema.</p><p> We can use as example the blog. In this case, the blog has only one schema, that we are called “post”. When the node server is started, we can see the next messages:</p><pre>(...)<br># GET /api/v1/blog/post/:id<br># GET /api/v1/blog/post<br># POST /api/v1/blog/post/create<br># POST /api/v1/blog/post/:id/update<br># POST /api/v1/blog/post/:id/delete<br>(...)<br></pre><p>IntrepidJS has created CRUD operations instead of you, so you won't have to be worried about this.</p><p> The URL is composed by the 'blog' prefix which stablishes the route_prefix attribute in the module configuration file (settings.js) and the operation name. On the other hand we have considered to write 'v1' before the schema's name as good practice in order to remind that this API will change and it's still on the first version.</p>",
                                 "content": []
                             }
                         ]
@@ -254,31 +254,31 @@
                     {
                         "id": "backPublic",
                         "title": "Public",
-                        "text": "",
+                        "text": "UNDER CONSTRUCTION",
                         "content": []
                     },
                     {
                         "id": "backRoutes",
                         "title": "Routes",
-                        "text": "",
+                        "text": "<p>IntrepidJS has an API which by default is used to communicate the part of the front-end to back-end, and this folder paths define the general backend API. <p> This general API can be used by any module that develops in IntrepidJS. </p><p> Within the file settings.js different prefixes used for general functionalities are defined </p><p> The blocks of routes and description of each are listed:<p><ul><li><b>accounts:</b> defines the routes regarding authentication such as login, and logout signup. The prefix to use the operations of user accounts is <pre> accounts </pre></li><li><b>admin:</b> defines the routes related to administrator actions. The route prefix for the administrator are defined on <pre> settings.siteRoutes.admin </pre></li><li><b>api:</b> defines the routes that use the core modules of IntrepidJS by API such as mail, users, permissions, etc. The prefix of this section is defined on <pre> settings.apiPrefix</pre></li><li><b>chat:</b> This defines the path for the partials that are used in chat. The prefix for the chat is <pre>chat</pre></li><li><b>profile:</b> defines the routes that manage each user profile. The prefix used for this section is <pre>profile</pre></li><li><b>generals:</b> There are other general routes that have no documentation and found in the root directory of the routes folder. The most important general routes are those that are responsible for generating API mongo models dynamically defined</p></li></ul>",
                         "content": []
                     },
                     {
                         "id": "backUtils",
                         "title": "Utils",
-                        "text": "",
+                        "text": "<p> This folder contains general utilities used in the core part of IntrepidJS and can be used in any module you want to develop. </p><p> The utilities and a brief description of each are listed below:<p><ul><li><b>socketio_events/chat.js:</b> configures the internal chat of IntrepidJS.</li><li><b>csv_engine.js:</b> utility to manage CSV files into a “stream”. </li><li><b>form_validation.js:</b> utility to validate forms with variables callback type <i>color, date, ObjectId y base64.</i> </li><li><b>hash.js:</b> utility based in <a href='https://github.com/visionmedia/node-pwd' target='_blank'>node-pwd</a> to generate string hashes with callbacks. </li><li><b>oauth_events.js:</b> Internal utility for initializing authentication events. </li><li><b>passport_strategies.js:</b> defines strategies for IntrepidJS passport authentication. </li><li><b>post_validator.js:</b> utility to clean off an object validated (only modifies the objects ObjectID type). </li><li><b>request_engine.js:</b> utility to manage  basic requests. </li><li><b>socketio.js:</b> Internal utility to manage socket.io events. </li><li><b>urls.js:</b> Utility to check if a string is a valid url.</li></ul>",
                         "content": []
                     },
                     {
                         "id": "backViews",
                         "title": "Views",
-                        "text": "",
+                        "text": "UNDER CONSTRUCTION",
                         "content": []
                     },
                     {
                         "id": "backWidgets",
                         "title": "Widgets",
-                        "text": "",
+                        "text": "<p> Widgets have an internal structure of the same type as the general IntrepidJS described in this point, they are specifically defined below:</p><ul><li><b>middlewares</b>: The middlewares to perform additional operations on the fly requests generated by the API go here</li><li><b>public</b>: The both frontend and dependencies scripts are included in this folder.</li><li><b>routes</b>: Views to partials for AngularJS are placed here, into index.js file. On the other hand the necessary calls to API in order to load widgets content are placed into api/index.js.</li><li><b>views</b>: the widget’s partials are placed into the “partials” subfolder and those which are related with the administration view for the configuration of the own widget into admin_partials</li>",
                         "content": []
                     }
                 ]
@@ -296,13 +296,13 @@
                             {
                                 "id": "partials",
                                 "title": "Partials",
-                                "text": "",
+                                "text": "<p>In order to compose a full view, we use the smallest elements which are focus in a more specific functionality. These elements are called partial and can be injected or included in any more generic view.<br /><p> Its utility is to include specific functionality and to include it in a simple manner other views.<br /> In order to implement a partial, view must be defined on a Jade file, a controller that handles Angular logic part and an entry in the routing file to handle the angular direction of what we want to show must be created.<br/> The main difference between a view and a partial functionality which is implemented on a partial is much smaller than the one defined in a full view, furthermore the partial can also be used in any part of the application.<br/> By convention:<ul><li><p> Partial views are stored in the path:<pre>views/partials/partial_1.jade</pre> The views of the modules are stored in the path:<pre>modules/[module_name]/views/partials/partial_1.jade</pre></p></li><li><p> The drivers are stored in the partial route AngularJS controllers:<pre>public/javascript/controllers/partial_1_controller.js</pre></li> The modules controllers are stored in the path:<pre>modules/[module_name]/public/javascript/controllers/partial_1_controller.js</pre></p></li><li><p> Partial routes are saved in the path of the AngularJS file paths:<pre>public/javascript/routes/partial_1_controller.js</pre></li>Modules routes are stored in the path:<pre>modules/[module_name]/public/javascript/routes/partial_1_controller.js</pre></p></li></ul><p> If the partial is just visual, it is not necessary to assign a controller to it.</p><p> To include a partial within a generic view Jade syntax is used and you must add the following line within the view where you want to include the partial:</p><pre>archivo: index_example.jade<br>h1= __(‘Main title’)<br>  div(id=”main_content”)<br>.col-xs-12<br>label= __(‘Some index content’)<br>include ./partials/partial_1.jade</pre>",
                                 "content": []
                             },
                             {
                                 "id": "highlights",
                                 "title": "Highlights",
-                                "text": "",
+                                "text": "The highlights are elements that summarize a module in a single view. They could be defined as a small <b>partial</b> which defines the most noteworthy in a module.</p><p> Each module can only have a highlight and it must be selected in the administrator section.</p><p> The main layout of web application is designed to be able to contain the highlights of the selected modules from the administration section.</p><p> The highlight Jade file of each module must be on the path:</p><pre>views/partials/highlight.jade</pre><p> The controller of the highlight must be together with other controllers on: </p><pre>public/javascripts/controllers/highlight_controller.js</pre><br><p> You can find an highlight example here: </p><ul><li><a href=\"https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/views/partials/highlights_step_one.jade\" target='_blank'>Highlight view</a></li><li><a href=\"https://github.com/wtelecom/xmas-module/blob/master/modules/xmas/public/javascripts/controllers/highlight_controller.js\" target='_blank'>Example of a controller</a></li></ul>",
                                 "content": []
                             }
                         ]
@@ -310,31 +310,31 @@
                     {
                         "id": "frontDependencies",
                         "title": "Dependencies",
-                        "text": "",
+                        "text": "UNDER CONSTRUCTION",
                         "content": []
                     },
                     {
                         "id": "frontControllers",
                         "title": "Controllers",
-                        "text": "",
+                        "text": "<p>IntrepidJS controllers handle events received from the view and execute the logic of sight, delegating the general functions of the application services (to be defined in following sections). We proceed to explain to which view is associated each controller and good development practices to date to which this guide was written. Each module which is created in IntrepidJS generates automatically the controller structures index_controller.js and admin_controller.js.</p><p>In <a href=\"http://toddmotto.com/digging-into-angulars-controller-as-syntax\" target='_blank'>this</a> link, a number of good practices about implementations of controllers are defined. It is suggested using them as models, so that the logic of the application to be delegated to services, which are available from any part of the application.</p><p> As further advice, we recommend using the syntax 'Controller as', which lets you assign an alias to controllers and greatly clarifies the developer if controllers are used nested while eliminating the need to use the variable $ scope in the controller to define the functions and internal variables to them, making it an implementation to OOP style.</p><ul><li><b>index_controller.js</b>: This controller is assigned to the main module view. </li><li><b>admin_controller.js</b>: This controller is asigned to the administration panel view of IntrepidJS </li></ul><p> As structure for any controller can use these same controllers, as they are empty by default.</p>",
                         "content": []
                     },
                     {
                         "id": "frontRoutes",
                         "title": "Routes",
-                        "text": "",
+                        "text": "UNDER CONSTRUCTION",
                         "content": []
                     },
                     {
                         "id": "frontDirectives",
                         "title": "Directives",
-                        "text": "",
+                        "text": "UNDER CONSTRUCTION",
                         "content": []
                     },
                     {
                         "id": "frontServices",
                         "title": "Services",
-                        "text": "",
+                        "text": "<p>About available services for the application, it exists horizontally the next below:</p><ul><li><b>uSession</b>: Getters and setters of the messages and the session users </li><li><b>fileReader</b>: Reading service files </li><li><b>permService</b>: Service which manage the user credentials (get y set) </li><li><b>restService</b>: $http wrapping service </li><li><b>socketIO</b>: Service which provides “on” and “emit” events of socket.io</li></ul><p> The services can be used from any part of the application, injecting a dependency anywhere in angular. Keep in mind that each service is a singleton. They can be generated as '.factory' or '.Service' in 'AngularJS', then a structure of what would be a standard service.</p><pre>angular<br>.module('moduleName')<br>.factory('serviceName',  ['$http',function(){<br>return{<br>//CODE HERE<br>}<br>}<br>]);</pre>",
                         "content": []
                     }
                     ]
@@ -348,8 +348,8 @@
         "content": [
             {
                 "id": "roles",
-                "title": "Gestion of roles and perfils",
-                "text": "",
+                "title": "Profile and roles management",
+                "text": "<p>The only role created by default is the administrator: admin. In order to add more roles or assign them to users you must go to the <a href=\"#/documentation#firstIntrepidJS\">Control Panel</a>.</p><p> Once the roles are created, they can be used inside of application to check that it is possible to make certain actions.</p><p> An example use of a role within the application is located in the file ‘myApp/middlewares/authorization.js’ and in this case, it is checked if the user has a role administrator:</p><pre>...<br>function hasAuthorization(model) {<br>return function(req, res, next) {<br>...<br>var isAdmin = function() {<br>return _.contains(user.roles, 'admin');<br>};<br>...<br>}<br>…</pre><p>Another example: myApp/views/header.jade </p><pre>...<br>if (_.contains(user.roles, 'admin'))<br>li<br>a(ui-sref='admin.dashboard')<br>i.fa.fa-tachometer.fa-fw<br>&nbsp;<br>span= __('Control panel')<br>li.divider<br>....</pre><p> It is necessary to highlight that the function hosted in ‘checkPermissions(permissions)’. Through this function we can check if an user has all desired roles.</p>",
                 "content": []
             }
         ]
@@ -368,7 +368,7 @@
             {
                 "id": "make_js",
                 "title": "Make.js",
-                "text": "<p>Every IntrepidJS’s instance possesses its proper CLI, and so in order to use it you must do as below:</p><pre>$ cd myApp<br />$ ./make.js</pre><p>Nowadays, the IntrepidJS’s CLI possesses two utilities:</p><ul><li><h3>createmodule</h3><p>Thanks to this command, you can create modules</p><br /><pre> $ ./make.js createmodule my_first_module</pre></li><li><h3>loaddata</h3><p>Thanks to this command, you can add default data in the schemas of your modules. It is useful when you want to initiate the database with unmodifiable data.</p><br /><pre> $ ./make.js loaddata my_first_module</pre><p>Before executing this command, you must create a JSON file containing your data in the corresponding module at the following route:<p><pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre><p>When the command is executed, it created a schema with the same name that the generating file and load the data into the MongoDB database.<br />The minimal syntax of the JSON file is the following one:</p><pre>{<br />    'wrap': {<br />       ...<br />     }<br />}<br /></pre></li><li><h3>createwidget</h3><h4>En construction</h4><p>This command will create a widget.</p></li></ul>",
+                "text": "<p>Every IntrepidJS’s instance possesses its proper CLI, and so in order to use it you must do as below:</p><pre>$ cd myApp<br />$ ./make.js</pre><p>Nowadays, the IntrepidJS’s CLI possesses two utilities:</p><ul><li><h3>createmodule</h3><p>Thanks to this command, you can create modules</p><br /><pre> $ ./make.js createmodule my_first_module</pre></li><li><h3>loaddata</h3><p>Thanks to this command, you can add default data in the schemas of your modules. It is useful when you want to initiate the database with unmodifiable data.</p><br /><pre> $ ./make.js loaddata my_first_module</pre><p>Before executing this command, you must create a JSON file containing your data in the corresponding module at the following route:<p><pre>$ touch <intrepid_instance>/modules/my_first_module/data/fixtures/my_schema.json</pre><p>When the command is executed, it created a schema with the same name that the generating file and load the data into the MongoDB database.<br />The minimal syntax of the JSON file is the following one:</p><pre>{<br />    'wrap': {<br />       ...<br />     }<br />}<br /></pre></li><li><h3>createwidget</h3><h4>UNDER CONSTRUCTION</h4><p>This command will create a widget.</p></li></ul>",
                 "content": []
             }
         ]
@@ -376,7 +376,7 @@
     {
         "id": "roadmap",
         "title": "Roadmap",
-        "text": "",
+        "text": "UNDER CONSTRUCTION",
         "content": []
     }
 ]
